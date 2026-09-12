@@ -1,9 +1,12 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PolySolve AI</title>
+
     <meta name="theme-color" content="#6366f1">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -11,10 +14,20 @@
     <link rel="icon" type="image/png" href="icon-192.png">
     <link rel="apple-touch-icon" href="icon-192.png">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Bootstrap -->
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    >
 
     <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
         :root {
@@ -200,7 +213,12 @@
         }
 
         .skeleton {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background: linear-gradient(
+                90deg,
+                #f0f0f0 25%,
+                #e0e0e0 50%,
+                #f0f0f0 75%
+            );
             background-size: 200% 100%;
             animation: loading 1.5s infinite;
             border-radius: 4px;
@@ -209,6 +227,7 @@
         }
 
         @keyframes loading {
+
             0% {
                 background-position: 200% 0;
             }
@@ -216,6 +235,7 @@
             100% {
                 background-position: -200% 0;
             }
+
         }
 
         .recording-pulse {
@@ -239,6 +259,7 @@
         }
 
         @keyframes wave-ripple {
+
             0% {
                 transform: scale(1);
                 opacity: 1;
@@ -248,6 +269,7 @@
                 transform: scale(3.5);
                 opacity: 0;
             }
+
         }
 
         .toast-custom {
@@ -258,7 +280,37 @@
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
         }
 
+
+        /* =====================================================
+           SIMPLE API KEY SECTION
+        ===================================================== */
+
+        .api-key-box {
+            margin-top: 1rem;
+            padding: 0;
+        }
+
+        .api-key-buttons {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .api-key-buttons button {
+            flex: 1;
+            box-shadow: none !important;
+            border-radius: 8px !important;
+            font-size: 0.72rem;
+            padding: 0.35rem 0.5rem;
+        }
+
+        .api-key-box input {
+            box-shadow: none !important;
+        }
+
+
         @media (max-width: 992px) {
+
             .sidebar {
                 display: none;
             }
@@ -267,9 +319,12 @@
                 margin-left: 0;
                 padding: 1.5rem;
             }
+
         }
 
+
         @media (max-width: 992px) {
+
             .sidebar {
                 position: fixed;
                 left: -320px;
@@ -347,131 +402,247 @@
                 font-size: 1.2rem;
                 color: var(--accent);
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
 <div class="app-container">
 
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
 
     <aside class="sidebar">
 
         <div class="brand-logo">
-            <div style="background: var(--accent); width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+
+            <div
+                style="
+                    background: var(--accent);
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                "
+            >
+
                 <i class="bi bi-cpu text-white"></i>
+
             </div>
 
+
             <span>
+
                 PolySolve
-                <span style="font-weight: 400; color: var(--text-muted);">AI</span>
+
+                <span
+                    style="
+                        font-weight: 400;
+                        color: var(--text-muted);
+                    "
+                >
+                    AI
+                </span>
+
             </span>
+
         </div>
+
 
         <nav class="nav flex-column mb-auto">
 
-            <a class="nav-link" href="#" onclick="startNewChat()">
+            <a
+                class="nav-link"
+                href="#"
+                onclick="startNewChat()"
+            >
+
                 <i class="bi bi-plus-lg me-2"></i>
+
                 New Chat
+
             </a>
 
-            <a class="nav-link active" href="#" onclick="showSection('dashboard')">
+
+            <a
+                class="nav-link active"
+                href="#"
+                onclick="showSection('dashboard')"
+            >
+
                 <i class="bi bi-house-door me-2"></i>
+
                 Dashboard
+
             </a>
 
-            <div class="mt-3 mb-2 px-3 small text-uppercase fw-bold text-muted" style="font-size: 0.65rem;">
+
+            <div
+                class="mt-3 mb-2 px-3 small text-uppercase fw-bold text-muted"
+                style="font-size: 0.65rem;"
+            >
+
                 Recent Solutions
+
             </div>
 
-            <div id="historyList" class="mb-3">
+
+            <div
+                id="historyList"
+                class="mb-3"
+            >
+
                 <p class="px-3 small text-muted italic">
                     No history yet
                 </p>
+
             </div>
 
-            <a class="nav-link"
-               href="#"
-               data-bs-toggle="modal"
-               data-bs-target="#aboutModal">
+
+            <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#aboutModal"
+            >
+
                 <i class="bi bi-info-circle me-2"></i>
+
                 About
+
             </a>
 
-            <a class="nav-link"
-               href="#"
-               data-bs-toggle="modal"
-               data-bs-target="#feedbackModal">
+
+            <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#feedbackModal"
+            >
+
                 <i class="bi bi-chat-left-dots me-2"></i>
+
                 Feedback
+
             </a>
 
-            <!-- GROQ API KEY -->
-            <div class="mt-3 px-3">
+
+            <!-- =================================================
+                 SIMPLE GROQ API KEY
+            ================================================= -->
+
+            <div class="api-key-box px-3">
 
                 <label class="small text-muted fw-bold mb-2">
+
                     <i class="bi bi-key me-1"></i>
+
                     Groq API Key
+
                 </label>
+
 
                 <input
                     type="password"
                     id="groqApiKey"
                     class="form-control form-control-sm rounded-3"
-                    placeholder="Enter your Groq API key"
+                    placeholder="Enter Groq API key"
                     autocomplete="off"
                 >
 
-                <button
-                    class="btn btn-primary btn-sm w-100 mt-2 rounded-pill"
-                    onclick="saveGroqApiKey()"
-                >
-                    <i class="bi bi-save me-1"></i>
-                    Save API Key
-                </button>
 
-                <button
-                    class="btn btn-outline-danger btn-sm w-100 mt-2 rounded-pill"
-                    onclick="removeGroqApiKey()"
-                >
-                    <i class="bi bi-trash me-1"></i>
-                    Remove API Key
-                </button>
+                <div class="api-key-buttons">
 
-                <small class="text-muted d-block mt-2" style="font-size: 0.65rem;">
-                    API key is stored locally in this browser for testing.
+                    <button
+                        class="btn btn-primary btn-sm"
+                        onclick="saveGroqApiKey()"
+                    >
+
+                        <i class="bi bi-save me-1"></i>
+
+                        Save
+
+                    </button>
+
+
+                    <button
+                        class="btn btn-outline-danger btn-sm"
+                        onclick="removeGroqApiKey()"
+                    >
+
+                        <i class="bi bi-trash me-1"></i>
+
+                        Remove
+
+                    </button>
+
+                </div>
+
+
+                <small
+                    class="text-muted d-block mt-2"
+                    style="font-size: 0.62rem;"
+                >
+
+                    Stored locally in this browser for testing.
+
                 </small>
 
-                <div id="apiKeyStatus"
-                     class="small mt-2"
-                     style="font-size: 0.65rem;">
-                </div>
+
+                <div
+                    id="apiKeyStatus"
+                    class="small mt-1"
+                    style="font-size: 0.65rem;"
+                ></div>
 
             </div>
 
         </nav>
 
-        <div class="px-3 mb-3" id="installContainer" style="display: none;">
+
+        <div
+            class="px-3 mb-3"
+            id="installContainer"
+            style="display: none;"
+        >
 
             <button
                 class="btn btn-primary btn-sm w-100 rounded-pill"
                 id="installBtn"
             >
+
                 <i class="bi bi-download me-2"></i>
+
                 Install App
+
             </button>
 
         </div>
 
+
         <div class="pt-4 text-center">
 
-            <p class="text-muted" style="font-size: 0.75rem;">
+            <p
+                class="text-muted"
+                style="font-size: 0.75rem;"
+            >
+
                 Status:
+
                 <span class="text-success">
                     ● AI Online
                 </span>
+
             </p>
 
         </div>
@@ -487,8 +658,14 @@
                 class="btn btn-light d-lg-none me-2"
                 id="menuToggle"
             >
-                <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+
+                <i
+                    class="bi bi-list"
+                    style="font-size: 1.5rem;"
+                ></i>
+
             </button>
+
 
             <div>
 
@@ -502,6 +679,7 @@
 
             </div>
 
+
             <div class="d-flex gap-3">
 
                 <button
@@ -509,10 +687,15 @@
                     onclick="toggleDarkMode()"
                     id="themeToggle"
                 >
+
                     <i class="bi bi-moon-stars"></i>
+
                 </button>
 
-                <div class="rounded-pill bg-white border px-3 py-1 d-flex align-items-center gap-2">
+
+                <div
+                    class="rounded-pill bg-white border px-3 py-1 d-flex align-items-center gap-2"
+                >
 
                     <span class="small fw-600">
                         Supported by Emmanuel
@@ -535,9 +718,15 @@
                         Universal AI Solver
                     </h1>
 
-                    <p class="opacity-75 lead mb-0" style="font-size: 1rem;">
-                        Upload any problem—math, science, history, or code.
-                        Get instant, expert-level breakdowns from a single photo.
+                    <p
+                        class="opacity-75 lead mb-0"
+                        style="font-size: 1rem;"
+                    >
+
+                        Upload any problem—math, science, history,
+                        or code. Get instant, expert-level breakdowns
+                        from a single photo.
+
                     </p>
 
                 </div>
@@ -553,9 +742,13 @@
 
                 <div class="neo-card p-4 h-100">
 
-                    <h6 class="fw-bold mb-4 d-flex align-items-center">
+                    <h6
+                        class="fw-bold mb-4 d-flex align-items-center"
+                    >
 
-                        <i class="bi bi-plus-circle-dotted me-2 text-primary"></i>
+                        <i
+                            class="bi bi-plus-circle-dotted me-2 text-primary"
+                        ></i>
 
                         New Problem
 
@@ -564,7 +757,10 @@
 
                     <div id="inputAreaContainer">
 
-                        <div class="dropzone mb-3" id="uploadArea">
+                        <div
+                            class="dropzone mb-3"
+                            id="uploadArea"
+                        >
 
                             <div id="uploadContent">
 
@@ -581,14 +777,18 @@
                                     PNG, JPG or Screenshot
                                 </p>
 
+
                                 <button
                                     id="browseBtn"
                                     class="btn btn-light border btn-sm mt-2 px-4 rounded-pill"
                                 >
+
                                     Browse Files
+
                                 </button>
 
                             </div>
+
 
                             <input
                                 type="file"
@@ -602,7 +802,10 @@
                     </div>
 
 
-                    <div id="imagePreview" style="display: none;">
+                    <div
+                        id="imagePreview"
+                        style="display: none;"
+                    >
 
                         <img
                             id="previewImg"
@@ -610,11 +813,14 @@
                             alt="Problem Preview"
                         >
 
+
                         <button
                             class="btn btn-link text-muted btn-sm w-100 mb-3"
                             onclick="clearImage()"
                         >
+
                             Discard Image
+
                         </button>
 
                     </div>
@@ -622,9 +828,14 @@
 
                     <div class="mb-3">
 
-                        <label class="small text-muted fw-bold mb-2">
+                        <label
+                            class="small text-muted fw-bold mb-2"
+                        >
+
                             Problem Description / Text Input
+
                         </label>
+
 
                         <div class="input-group input-group-sm">
 
@@ -635,13 +846,16 @@
                                 rows="3"
                             ></textarea>
 
+
                             <button
                                 class="btn btn-outline-primary border-light shadow-sm"
                                 type="button"
                                 id="voiceBtn"
                                 onclick="startVoiceInput()"
                             >
+
                                 <i class="bi bi-mic"></i>
+
                             </button>
 
                         </div>
@@ -658,21 +872,29 @@
                             class="badge rounded-pill bg-light text-muted border py-2 px-3 cursor-pointer"
                             onclick="usePrompt('Explain step-by-step')"
                         >
+
                             Step-by-step
+
                         </span>
+
 
                         <span
                             class="badge rounded-pill bg-light text-muted border py-2 px-3 cursor-pointer"
                             onclick="usePrompt('Verify my answer')"
                         >
+
                             Verify Answer
+
                         </span>
+
 
                         <span
                             class="badge rounded-pill bg-light text-muted border py-2 px-3 cursor-pointer"
                             onclick="usePrompt('Summarize key concepts')"
                         >
+
                             Summarize
+
                         </span>
 
                     </div>
@@ -683,8 +905,11 @@
                         id="solveBtn"
                         onclick="solveMathProblem()"
                     >
+
                         <i class="bi bi-stars me-2"></i>
+
                         Generate Solution
+
                     </button>
 
 
@@ -717,9 +942,13 @@
                     id="placeholderResult"
                 >
 
-                    <div class="d-flex flex-column align-items-center justify-content-center h-100 text-center py-5">
+                    <div
+                        class="d-flex flex-column align-items-center justify-content-center h-100 text-center py-5"
+                    >
 
-                        <div class="bg-light rounded-circle p-4 mb-3">
+                        <div
+                            class="bg-light rounded-circle p-4 mb-3"
+                        >
 
                             <i
                                 class="bi bi-layout-text-sidebar-reverse text-muted"
@@ -728,13 +957,17 @@
 
                         </div>
 
+
                         <h6 class="fw-bold text-muted">
                             Analysis Window
                         </h6>
 
+
                         <p class="text-muted small px-5">
-                            Your step-by-step breakdown will appear here
-                            once the AI processes the image.
+
+                            Your step-by-step breakdown will appear
+                            here once the AI processes the image.
+
                         </p>
 
                     </div>
@@ -748,11 +981,14 @@
                     style="display: none;"
                 >
 
-                    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+                    <div
+                        class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom"
+                    >
 
                         <h6 class="fw-bold mb-0">
                             Solution Breakdown
                         </h6>
+
 
                         <div class="d-flex gap-2">
 
@@ -760,29 +996,40 @@
                                 class="btn btn-light btn-sm rounded-pill"
                                 onclick="copySolution()"
                             >
+
                                 <i class="bi bi-clipboard"></i>
+
                             </button>
+
 
                             <button
                                 class="btn btn-light btn-sm rounded-pill"
                                 onclick="exportToTXT()"
                                 title="Export as TXT"
                             >
+
                                 <i class="bi bi-file-earmark-text"></i>
+
                             </button>
+
 
                             <button
                                 class="btn btn-light btn-sm rounded-pill"
                                 onclick="exportToPDF()"
                             >
+
                                 <i class="bi bi-file-earmark-pdf"></i>
+
                             </button>
+
 
                             <button
                                 class="btn btn-light btn-sm rounded-pill"
                                 onclick="shareSolution()"
                             >
+
                                 <i class="bi bi-share"></i>
+
                             </button>
 
                         </div>
@@ -830,7 +1077,9 @@
 </div>
 
 
-<!-- ABOUT MODAL -->
+<!-- =====================================================
+     ABOUT MODAL
+===================================================== -->
 
 <div
     class="modal fade"
@@ -840,13 +1089,16 @@
 
     <div class="modal-dialog modal-dialog-centered">
 
-        <div class="modal-content rounded-4 border-0 shadow">
+        <div
+            class="modal-content rounded-4 border-0 shadow"
+        >
 
             <div class="modal-header border-0">
 
                 <h5 class="modal-title fw-bold">
                     About PolySolve AI
                 </h5>
+
 
                 <button
                     type="button"
@@ -856,14 +1108,17 @@
 
             </div>
 
+
             <div class="modal-body text-muted">
 
                 PolySolve AI is a professional academic assistant
                 powered by Emmanuel group of technology.
 
-                Get yourself the app on your device by simply tapping
-                "Add to home screen" which is found in the three dots
-                at the right top of your screen.
+                <br><br>
+
+                Get yourself the app on your device by simply
+                tapping "Add to home screen" which is found in
+                the three dots at the right top of your screen.
 
             </div>
 
@@ -874,7 +1129,9 @@
 </div>
 
 
-<!-- FEEDBACK MODAL -->
+<!-- =====================================================
+     FEEDBACK MODAL
+===================================================== -->
 
 <div
     class="modal fade"
@@ -884,13 +1141,16 @@
 
     <div class="modal-dialog modal-dialog-centered">
 
-        <div class="modal-content rounded-4 border-0 shadow">
+        <div
+            class="modal-content rounded-4 border-0 shadow"
+        >
 
             <div class="modal-header border-0">
 
                 <h5 class="modal-title fw-bold">
                     AI Usability Feedback
                 </h5>
+
 
                 <button
                     type="button"
@@ -900,12 +1160,17 @@
 
             </div>
 
+
             <div class="modal-body text-muted">
 
                 <p class="small mb-3">
-                    How can we improve the AI's guidance and usability?
-                    Your feedback helps us train better models.
+
+                    How can we improve the AI's guidance and
+                    usability? Your feedback helps us train
+                    better models.
+
                 </p>
+
 
                 <textarea
                     id="feedbackText"
@@ -914,21 +1179,29 @@
                     placeholder="Share your experience or report a logic error..."
                 ></textarea>
 
+
                 <button
                     class="btn btn-primary w-100 rounded-pill"
                     onclick="submitFeedback()"
                     data-bs-dismiss="modal"
                 >
+
                     Submit Feedback
+
                 </button>
 
-                <p class="text-center mt-3 mb-0 small">
+
+                <p
+                    class="text-center mt-3 mb-0 small"
+                >
 
                     <a
                         href="mailto:emmanuelademun7@gmail.com"
                         class="text-decoration-none text-muted"
                     >
+
                         Need direct support? Email us.
+
                     </a>
 
                 </p>
@@ -942,13 +1215,24 @@
 </div>
 
 
-<!-- JAVASCRIPT LIBRARIES -->
+<!-- =====================================================
+     JAVASCRIPT LIBRARIES
+===================================================== -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"
+></script>
 
-<script src="https://cdn.jsdelivr.net/npm/marked@9.1.2/marked.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/marked@9.1.2/marked.min.js"
+></script>
+
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+></script>
+
 
 <script
     id="MathJax-script"
@@ -963,20 +1247,35 @@
    MOBILE SIDEBAR
 ========================================================= */
 
-const sidebar = document.querySelector('.sidebar');
-const overlay = document.getElementById('sidebarOverlay');
-const menuToggle = document.getElementById('menuToggle');
+const sidebar =
+    document.querySelector('.sidebar');
+
+const overlay =
+    document.getElementById('sidebarOverlay');
+
+const menuToggle =
+    document.getElementById('menuToggle');
+
 
 function toggleMenu() {
 
     sidebar.classList.toggle('active');
+
     overlay.classList.toggle('active');
 
 }
 
-menuToggle.addEventListener('click', toggleMenu);
 
-overlay.addEventListener('click', toggleMenu);
+menuToggle.addEventListener(
+    'click',
+    toggleMenu
+);
+
+
+overlay.addEventListener(
+    'click',
+    toggleMenu
+);
 
 
 function startNewChat() {
@@ -988,11 +1287,15 @@ function startNewChat() {
     if (window.innerWidth < 992) {
 
         sidebar.classList.remove('active');
+
         overlay.classList.remove('active');
 
     }
 
-    showNotification('New chat started', 'info');
+    showNotification(
+        'New chat started',
+        'info'
+    );
 
 }
 
@@ -1031,9 +1334,11 @@ const RATE_LIMIT_MS = 3000;
 
 const CONFIG = {
 
-    API_ENDPOINT: 'https://api.groq.com/openai/v1/chat/completions',
+    API_ENDPOINT:
+        'https://api.groq.com/openai/v1/chat/completions',
 
-    MODEL: 'meta-llama/llama-4-scout-17b-16e-instruct'
+    MODEL:
+        'qwen/qwen3.6-27b'
 
 };
 
@@ -1044,20 +1349,31 @@ const CONFIG = {
 
 function toggleDarkMode() {
 
-    const html = document.documentElement;
+    const html =
+        document.documentElement;
 
     const isDark =
-        html.getAttribute('data-bs-theme') === 'dark';
+        html.getAttribute(
+            'data-bs-theme'
+        ) === 'dark';
+
 
     html.setAttribute(
         'data-bs-theme',
         isDark ? 'light' : 'dark'
     );
 
-    document.getElementById('themeToggle').innerHTML =
+
+    document.getElementById(
+        'themeToggle'
+    ).innerHTML =
+
         isDark
+
             ? '<i class="bi bi-moon-stars"></i>'
+
             : '<i class="bi bi-sun"></i>';
+
 
     localStorage.setItem(
         'theme',
@@ -1074,10 +1390,14 @@ function toggleDarkMode() {
 function saveGroqApiKey() {
 
     const input =
-        document.getElementById('groqApiKey');
+        document.getElementById(
+            'groqApiKey'
+        );
+
 
     const apiKey =
         input.value.trim();
+
 
     if (!apiKey) {
 
@@ -1090,6 +1410,7 @@ function saveGroqApiKey() {
 
     }
 
+
     if (!apiKey.startsWith('gsk_')) {
 
         showNotification(
@@ -1101,14 +1422,18 @@ function saveGroqApiKey() {
 
     }
 
+
     localStorage.setItem(
         'groq_api_key',
         apiKey
     );
 
+
     input.value = '';
 
+
     updateApiKeyStatus();
+
 
     showNotification(
         'Groq API key saved successfully',
@@ -1120,16 +1445,22 @@ function saveGroqApiKey() {
 
 function getGroqApiKey() {
 
-    return localStorage.getItem('groq_api_key');
+    return localStorage.getItem(
+        'groq_api_key'
+    );
 
 }
 
 
 function removeGroqApiKey() {
 
-    localStorage.removeItem('groq_api_key');
+    localStorage.removeItem(
+        'groq_api_key'
+    );
+
 
     updateApiKeyStatus();
+
 
     showNotification(
         'Groq API key removed',
@@ -1142,25 +1473,37 @@ function removeGroqApiKey() {
 function updateApiKeyStatus() {
 
     const status =
-        document.getElementById('apiKeyStatus');
+        document.getElementById(
+            'apiKeyStatus'
+        );
+
 
     const key =
         getGroqApiKey();
 
+
     if (key) {
 
         status.innerHTML =
+
             '<span class="text-success">' +
+
             '<i class="bi bi-check-circle me-1"></i>' +
+
             'API key saved' +
+
             '</span>';
 
     } else {
 
         status.innerHTML =
+
             '<span class="text-danger">' +
+
             '<i class="bi bi-x-circle me-1"></i>' +
+
             'No API key saved' +
+
             '</span>';
 
     }
@@ -1172,78 +1515,95 @@ function updateApiKeyStatus() {
    PAGE LOAD
 ========================================================= */
 
-window.addEventListener('load', function() {
-
-    if (localStorage.getItem('theme') === 'dark') {
-
-        toggleDarkMode();
-
-    }
-
-    renderHistory();
-
-    updateApiKeyStatus();
-
-
-    /* Keyboard shortcuts */
-
-    window.addEventListener('keydown', (e) => {
+window.addEventListener(
+    'load',
+    function() {
 
         if (
-            (e.ctrlKey || e.metaKey) &&
-            e.key === 'Enter'
+            localStorage.getItem('theme') === 'dark'
         ) {
 
-            solveMathProblem();
+            toggleDarkMode();
 
         }
 
-        if (
-            (e.ctrlKey || e.metaKey) &&
-            e.key === 'm'
-        ) {
 
-            e.preventDefault();
+        renderHistory();
 
-            startNewChat();
-
-        }
-
-        if (e.key === 'Escape') {
-
-            clearImage();
-
-        }
-
-    });
+        updateApiKeyStatus();
 
 
-    /* Paste image */
+        /* Keyboard shortcuts */
 
-    document.addEventListener('paste', (e) => {
+        window.addEventListener(
+            'keydown',
+            (e) => {
 
-        for (const item of e.clipboardData.items) {
+                if (
+                    (e.ctrlKey || e.metaKey) &&
+                    e.key === 'Enter'
+                ) {
 
-            if (
-                item.type.indexOf('image') === 0
-            ) {
+                    solveMathProblem();
 
-                const file =
-                    item.getAsFile();
+                }
 
-                if (file) {
 
-                    handleFile(file);
+                if (
+                    (e.ctrlKey || e.metaKey) &&
+                    e.key === 'm'
+                ) {
+
+                    e.preventDefault();
+
+                    startNewChat();
+
+                }
+
+
+                if (e.key === 'Escape') {
+
+                    clearImage();
 
                 }
 
             }
+        );
 
-        }
 
-    });
+        /* Paste image */
 
-});
+        document.addEventListener(
+            'paste',
+            (e) => {
+
+                for (
+                    const item of e.clipboardData.items
+                ) {
+
+                    if (
+                        item.type.indexOf('image') === 0
+                    ) {
+
+                        const file =
+                            item.getAsFile();
+
+
+                        if (file) {
+
+                            handleFile(file);
+
+                        }
+
+                    }
+
+                }
+
+            }
+        );
+
+    }
+);
 
 
 /* =========================================================
@@ -1251,26 +1611,37 @@ window.addEventListener('load', function() {
 ========================================================= */
 
 const uploadArea =
-    document.getElementById('uploadArea');
+    document.getElementById(
+        'uploadArea'
+    );
+
 
 const fileInput =
-    document.getElementById('fileInput');
+    document.getElementById(
+        'fileInput'
+    );
+
 
 const browseBtn =
-    document.getElementById('browseBtn');
+    document.getElementById(
+        'browseBtn'
+    );
 
 
-uploadArea.addEventListener('click', (e) => {
+uploadArea.addEventListener(
+    'click',
+    (e) => {
 
-    if (e.target === browseBtn) {
+        if (e.target === browseBtn) {
 
-        return;
+            return;
+
+        }
+
+        fileInput.click();
 
     }
-
-    fileInput.click();
-
-});
+);
 
 
 browseBtn.addEventListener(
@@ -1285,7 +1656,9 @@ uploadArea.addEventListener(
 
         e.preventDefault();
 
-        uploadArea.classList.add('drag-over');
+        uploadArea.classList.add(
+            'drag-over'
+        );
 
     }
 );
@@ -1313,6 +1686,7 @@ uploadArea.addEventListener(
             'drag-over'
         );
 
+
         if (
             e.dataTransfer.files.length > 0
         ) {
@@ -1331,7 +1705,9 @@ fileInput.addEventListener(
     'change',
     (e) => {
 
-        if (e.target.files.length > 0) {
+        if (
+            e.target.files.length > 0
+        ) {
 
             handleFile(
                 e.target.files[0]
@@ -1349,7 +1725,9 @@ fileInput.addEventListener(
 
 async function handleFile(file) {
 
-    if (!file.type.startsWith('image/')) {
+    if (
+        !file.type.startsWith('image/')
+    ) {
 
         return showNotification(
             'Images only',
@@ -1358,19 +1736,29 @@ async function handleFile(file) {
 
     }
 
-    const img = new Image();
+
+    const img =
+        new Image();
+
 
     const objectUrl =
         URL.createObjectURL(file);
 
-    img.src = objectUrl;
+
+    img.src =
+        objectUrl;
+
 
     img.onload = () => {
 
         const canvas =
-            document.createElement('canvas');
+            document.createElement(
+                'canvas'
+            );
+
 
         const MAX_WIDTH = 1200;
+
 
         const scale =
             Math.min(
@@ -1378,14 +1766,20 @@ async function handleFile(file) {
                 MAX_WIDTH / img.width
             );
 
+
         canvas.width =
             img.width * scale;
+
 
         canvas.height =
             img.height * scale;
 
+
         const ctx =
-            canvas.getContext('2d');
+            canvas.getContext(
+                '2d'
+            );
+
 
         ctx.drawImage(
             img,
@@ -1395,25 +1789,33 @@ async function handleFile(file) {
             canvas.height
         );
 
+
         uploadedImage =
             canvas.toDataURL(
                 'image/jpeg',
                 0.85
             );
 
+
         document.getElementById(
             'imagePreview'
         ).style.display = 'block';
 
+
         document.getElementById(
             'previewImg'
-        ).src = uploadedImage;
+        ).src =
+            uploadedImage;
+
 
         document.getElementById(
             'uploadArea'
         ).style.display = 'none';
 
-        URL.revokeObjectURL(objectUrl);
+
+        URL.revokeObjectURL(
+            objectUrl
+        );
 
     };
 
@@ -1430,29 +1832,36 @@ function clearImage() {
 
     chatContext = [];
 
+
     document.getElementById(
         'imagePreview'
     ).style.display = 'none';
+
 
     document.getElementById(
         'uploadArea'
     ).style.display = 'block';
 
+
     document.getElementById(
         'resultsCard'
     ).style.display = 'none';
+
 
     document.getElementById(
         'placeholderResult'
     ).style.display = 'block';
 
+
     document.getElementById(
         'solutionResult'
     ).innerHTML = '';
 
+
     document.getElementById(
         'customInstructions'
     ).value = '';
+
 
     fileInput.value = '';
 
@@ -1467,7 +1876,8 @@ function usePrompt(text) {
 
     document.getElementById(
         'customInstructions'
-    ).value = text;
+    ).value =
+        text;
 
 }
 
@@ -1476,7 +1886,10 @@ function usePrompt(text) {
    AUDIO
 ========================================================= */
 
-function playTone(freq, duration) {
+function playTone(
+    freq,
+    duration
+) {
 
     try {
 
@@ -1486,36 +1899,49 @@ function playTone(freq, duration) {
                 window.webkitAudioContext
             )();
 
+
         const oscillator =
             audioCtx.createOscillator();
+
 
         const gainNode =
             audioCtx.createGain();
 
-        oscillator.type = 'sine';
+
+        oscillator.type =
+            'sine';
+
 
         oscillator.frequency.setValueAtTime(
             freq,
             audioCtx.currentTime
         );
 
+
         gainNode.gain.setValueAtTime(
             0.1,
             audioCtx.currentTime
         );
+
 
         gainNode.gain.exponentialRampToValueAtTime(
             0.01,
             audioCtx.currentTime + duration
         );
 
-        oscillator.connect(gainNode);
+
+        oscillator.connect(
+            gainNode
+        );
+
 
         gainNode.connect(
             audioCtx.destination
         );
 
+
         oscillator.start();
+
 
         oscillator.stop(
             audioCtx.currentTime + duration
@@ -1550,6 +1976,7 @@ function startVoiceInput() {
         window.SpeechRecognition ||
         window.webkitSpeechRecognition;
 
+
     if (!SpeechRecognition) {
 
         return showNotification(
@@ -1559,8 +1986,11 @@ function startVoiceInput() {
 
     }
 
+
     const voiceBtn =
-        document.getElementById('voiceBtn');
+        document.getElementById(
+            'voiceBtn'
+        );
 
 
     if (recognitionInstance) {
@@ -1578,10 +2008,14 @@ function startVoiceInput() {
 
     isVoiceRestarting = false;
 
+
     const recognition =
         new SpeechRecognition();
 
-    recognition.continuous = true;
+
+    recognition.continuous =
+        true;
+
 
     recognitionInstance =
         recognition;
@@ -1598,14 +2032,17 @@ function startVoiceInput() {
 
         }
 
+
         voiceBtn.classList.add(
             'recording-pulse'
         );
+
 
         voiceBtn.classList.replace(
             'btn-outline-primary',
             'btn-danger'
         );
+
 
         if (!isVoiceRestarting) {
 
@@ -1616,6 +2053,7 @@ function startVoiceInput() {
 
         }
 
+
         isVoiceRestarting = false;
 
     };
@@ -1624,6 +2062,7 @@ function startVoiceInput() {
     recognition.onresult = (event) => {
 
         let transcript = '';
+
 
         for (
             let i = event.resultIndex;
@@ -1636,10 +2075,12 @@ function startVoiceInput() {
 
         }
 
+
         const area =
             document.getElementById(
                 'customInstructions'
             );
+
 
         area.value =
             (
@@ -1660,6 +2101,7 @@ function startVoiceInput() {
 
             isVoiceRestarting = true;
 
+
             try {
 
                 recognition.start();
@@ -1668,20 +2110,24 @@ function startVoiceInput() {
 
             } catch (e) {
 
-                recognitionInstance = null;
+                recognitionInstance =
+                    null;
 
             }
 
         }
+
 
         playTone(
             440,
             0.15
         );
 
+
         voiceBtn.classList.remove(
             'recording-pulse'
         );
+
 
         voiceBtn.classList.replace(
             'btn-danger',
@@ -1702,9 +2148,13 @@ function startVoiceInput() {
 
         }
 
-        recognitionInstance = null;
 
-        isManualStop = false;
+        recognitionInstance =
+            null;
+
+
+        isManualStop =
+            false;
 
     };
 
@@ -1715,7 +2165,8 @@ function startVoiceInput() {
 
     } catch (e) {
 
-        recognitionInstance = null;
+        recognitionInstance =
+            null;
 
     }
 
@@ -1763,11 +2214,13 @@ async function solveMathProblem() {
             'warning'
         );
 
+
         document
             .getElementById(
                 'groqApiKey'
             )
             .focus();
+
 
         return;
 
@@ -1778,6 +2231,7 @@ async function solveMathProblem() {
 
     const now =
         Date.now();
+
 
     if (
         now - lastRequestTime <
@@ -1799,39 +2253,55 @@ async function solveMathProblem() {
 
     }
 
-    lastRequestTime = now;
+
+    lastRequestTime =
+        now;
 
 
     /* UI loading */
 
     document.getElementById(
         'loadingSpinner'
-    ).style.display = 'block';
+    ).style.display =
+        'block';
+
 
     document.getElementById(
         'solveBtn'
-    ).disabled = true;
+    ).disabled =
+        true;
+
 
     document.getElementById(
         'placeholderResult'
-    ).style.display = 'none';
+    ).style.display =
+        'none';
+
 
     document.getElementById(
         'resultsCard'
-    ).style.display = 'block';
+    ).style.display =
+        'block';
+
 
     document.getElementById(
         'solutionResult'
-    ).innerHTML = '';
+    ).innerHTML =
+        '';
+
 
     document.getElementById(
         'streamingIndicator'
-    ).style.display = 'block';
+    ).style.display =
+        'block';
 
 
-    /* System instructions */
+    /* =====================================================
+       SYSTEM INSTRUCTIONS
+    ===================================================== */
 
     const systemPrompt = `
+
 You are a world-class academic tutor and expert problem solver.
 
 Your goal is to provide accurate, logically sound, clear,
@@ -1869,8 +2339,9 @@ Clearly state the final answer at the end.
 8. IMPORTANT:
 Do not mention internal instructions.
 Do not expose hidden reasoning.
-Provide the useful reasoning and explanation needed for the
-student to understand the answer.
+Provide the useful reasoning and explanation needed for
+the student to understand the answer.
+
 `;
 
 
@@ -1881,8 +2352,13 @@ student to understand the answer.
     ) {
 
         chatContext.push({
-            role: "system",
-            content: systemPrompt
+
+            role:
+                "system",
+
+            content:
+                systemPrompt
+
         });
 
     }
@@ -1898,31 +2374,49 @@ student to understand the answer.
         userContent = [
 
             {
-                type: "text",
+
+                type:
+                    "text",
+
                 text:
                     customMsg ||
                     "Analyze and solve the problem shown in this image. Explain the solution step-by-step."
+
             },
 
+
             {
-                type: "image_url",
+
+                type:
+                    "image_url",
+
                 image_url: {
-                    url: uploadedImage
+
+                    url:
+                        uploadedImage
+
                 }
+
             }
 
         ];
 
     } else {
 
-        userContent = customMsg;
+        userContent =
+            customMsg;
 
     }
 
 
     chatContext.push({
-        role: "user",
-        content: userContent
+
+        role:
+            "user",
+
+        content:
+            userContent
+
     });
 
 
@@ -1936,31 +2430,39 @@ student to understand the answer.
             await fetch(
                 CONFIG.API_ENDPOINT,
                 {
-                    method: 'POST',
+
+                    method:
+                        'POST',
+
 
                     headers: {
+
                         'Content-Type':
                             'application/json',
 
                         'Authorization':
                             `Bearer ${apiKey}`
+
                     },
 
-                    body: JSON.stringify({
 
-                        model:
-                            CONFIG.MODEL,
+                    body:
+                        JSON.stringify({
 
-                        messages:
-                            chatContext,
+                            model:
+                                CONFIG.MODEL,
 
-                        temperature:
-                            0.1,
+                            messages:
+                                chatContext,
 
-                        stream:
-                            true
+                            temperature:
+                                0.1,
 
-                    })
+                            stream:
+                                true
+
+                        })
+
                 }
             );
 
@@ -1972,6 +2474,7 @@ student to understand the answer.
         if (!response.ok) {
 
             let errorData = {};
+
 
             try {
 
@@ -2038,12 +2541,17 @@ student to understand the answer.
         const reader =
             response.body.getReader();
 
+
         const decoder =
             new TextDecoder();
 
-        let fullContent = '';
 
-        let lineBuffer = '';
+        let fullContent =
+            '';
+
+
+        let lineBuffer =
+            '';
 
 
         while (true) {
@@ -2051,7 +2559,8 @@ student to understand the answer.
             const {
                 done,
                 value
-            } = await reader.read();
+            } =
+                await reader.read();
 
 
             if (done) {
@@ -2065,7 +2574,8 @@ student to understand the answer.
                 decoder.decode(
                     value,
                     {
-                        stream: true
+                        stream:
+                            true
                     }
                 );
 
@@ -2083,7 +2593,9 @@ student to understand the answer.
             ) {
 
                 if (
-                    !line.startsWith('data: ')
+                    !line.startsWith(
+                        'data: '
+                    )
                 ) {
 
                     continue;
@@ -2092,7 +2604,9 @@ student to understand the answer.
 
 
                 const dataStr =
-                    line.substring(6).trim();
+                    line.substring(
+                        6
+                    ).trim();
 
 
                 if (
@@ -2122,7 +2636,8 @@ student to understand the answer.
 
                     if (delta) {
 
-                        fullContent += delta;
+                        fullContent +=
+                            delta;
 
 
                         document
@@ -2139,8 +2654,11 @@ student to understand the answer.
                             window.MathJax
                         ) {
 
-                            MathJax.typesetPromise()
-                                .catch(() => {});
+                            MathJax
+                                .typesetPromise()
+                                .catch(
+                                    () => {}
+                                );
 
                         }
 
@@ -2161,14 +2679,19 @@ student to understand the answer.
 
 
         /* =================================================
-           SAVE AI RESPONSE TO CONTEXT
+           SAVE AI RESPONSE
         ================================================= */
 
         if (fullContent) {
 
             chatContext.push({
-                role: "assistant",
-                content: fullContent
+
+                role:
+                    "assistant",
+
+                content:
+                    fullContent
+
             });
 
         }
@@ -2177,13 +2700,20 @@ student to understand the answer.
         /* Save history */
 
         saveToHistory(
-            customMsg.substring(0, 25) ||
+
+            customMsg.substring(
+                0,
+                25
+            ) ||
+
             (
                 uploadedImage
                     ? "Visual Analysis"
                     : "New Chat"
             ),
+
             fullContent
+
         );
 
 
@@ -2191,8 +2721,11 @@ student to understand the answer.
             window.MathJax
         ) {
 
-            MathJax.typesetPromise()
-                .catch(() => {});
+            MathJax
+                .typesetPromise()
+                .catch(
+                    () => {}
+                );
 
         }
 
@@ -2214,8 +2747,6 @@ student to understand the answer.
 
         /*
             Remove the last user message if the request failed.
-            This prevents a failed request from polluting the
-            conversation context.
         */
 
         if (
@@ -2233,15 +2764,20 @@ student to understand the answer.
 
         document.getElementById(
             'loadingSpinner'
-        ).style.display = 'none';
+        ).style.display =
+            'none';
+
 
         document.getElementById(
             'streamingIndicator'
-        ).style.display = 'none';
+        ).style.display =
+            'none';
+
 
         document.getElementById(
             'solveBtn'
-        ).disabled = false;
+        ).disabled =
+            false;
 
     }
 
@@ -2267,11 +2803,14 @@ function saveToHistory(
 
     const newItem = {
 
-        id: Date.now(),
+        id:
+            Date.now(),
 
-        subject: subject,
+        subject:
+            subject,
 
-        content: content,
+        content:
+            content,
 
         date:
             new Date()
@@ -2288,7 +2827,10 @@ function saveToHistory(
     localStorage.setItem(
         'omni_history',
         JSON.stringify(
-            history.slice(0, 10)
+            history.slice(
+                0,
+                10
+            )
         )
     );
 
@@ -2344,6 +2886,7 @@ function renderHistory() {
 
                     </a>
 
+
                     <button
                         class="btn btn-link btn-sm text-danger opacity-50"
                         onclick="deleteHistoryItem(${item.id})"
@@ -2379,7 +2922,9 @@ function deleteHistoryItem(id) {
 
     localStorage.setItem(
         'omni_history',
-        JSON.stringify(history)
+        JSON.stringify(
+            history
+        )
     );
 
 
@@ -2408,11 +2953,15 @@ function loadHistoryItem(id) {
 
         document.getElementById(
             'placeholderResult'
-        ).style.display = 'none';
+        ).style.display =
+            'none';
+
 
         document.getElementById(
             'resultsCard'
-        ).style.display = 'block';
+        ).style.display =
+            'block';
+
 
         document.getElementById(
             'solutionResult'
@@ -2426,8 +2975,11 @@ function loadHistoryItem(id) {
             window.MathJax
         ) {
 
-            MathJax.typesetPromise()
-                .catch(() => {});
+            MathJax
+                .typesetPromise()
+                .catch(
+                    () => {}
+                );
 
         }
 
@@ -2452,16 +3004,20 @@ function loadHistoryItem(id) {
 
 
 /* =========================================================
-   SECURITY HELPER FOR HISTORY TITLES
+   SECURITY HELPER
 ========================================================= */
 
 function escapeHtml(text) {
 
     const div =
-        document.createElement('div');
+        document.createElement(
+            'div'
+        );
+
 
     div.textContent =
         text;
+
 
     return div.innerHTML;
 
@@ -2482,24 +3038,40 @@ function exportToPDF() {
 
     const opt = {
 
-        margin: 1,
+        margin:
+            1,
 
         filename:
             'PolySolve_Report.pdf',
 
         image: {
-            type: 'jpeg',
-            quality: 0.98
+
+            type:
+                'jpeg',
+
+            quality:
+                0.98
+
         },
 
         html2canvas: {
-            scale: 2
+
+            scale:
+                2
+
         },
 
         jsPDF: {
-            unit: 'in',
-            format: 'letter',
-            orientation: 'portrait'
+
+            unit:
+                'in',
+
+            format:
+                'letter',
+
+            orientation:
+                'portrait'
+
         }
 
     };
@@ -2529,13 +3101,16 @@ function exportToTXT() {
         new Blob(
             [text],
             {
-                type: 'text/plain'
+                type:
+                    'text/plain'
             }
         );
 
 
     const anchor =
-        document.createElement('a');
+        document.createElement(
+            'a'
+        );
 
 
     anchor.download =
@@ -2572,21 +3147,25 @@ function copySolution() {
 
     navigator.clipboard
         .writeText(text)
-        .then(() => {
+        .then(
+            () => {
 
-            showNotification(
-                'Copied to clipboard!'
-            );
+                showNotification(
+                    'Copied to clipboard!'
+                );
 
-        })
-        .catch(() => {
+            }
+        )
+        .catch(
+            () => {
 
-            showNotification(
-                'Could not copy solution',
-                'danger'
-            );
+                showNotification(
+                    'Could not copy solution',
+                    'danger'
+                );
 
-        });
+            }
+        );
 
 }
 
@@ -2624,7 +3203,8 @@ async function shareSolution() {
                 title:
                     'PolySolve AI Solution',
 
-                text: text
+                text:
+                    text
 
             });
 
@@ -2639,6 +3219,7 @@ async function shareSolution() {
     } else {
 
         copySolution();
+
 
         showNotification(
             'Sharing is not supported here. Solution copied instead.',
@@ -2695,7 +3276,8 @@ function submitFeedback() {
 
         document.getElementById(
             'feedbackText'
-        ).value = '';
+        ).value =
+            '';
 
     }
 
@@ -2723,7 +3305,9 @@ function showNotification(
 ) {
 
     const div =
-        document.createElement('div');
+        document.createElement(
+            'div'
+        );
 
 
     div.className =
@@ -2840,11 +3424,15 @@ window.addEventListener(
 
         e.preventDefault();
 
-        deferredPrompt = e;
+
+        deferredPrompt =
+            e;
+
 
         document.getElementById(
             'installContainer'
-        ).style.display = 'block';
+        ).style.display =
+            'block';
 
     }
 );
@@ -2878,12 +3466,14 @@ document.getElementById(
 
             document.getElementById(
                 'installContainer'
-            ).style.display = 'none';
+            ).style.display =
+                'none';
 
         }
 
 
-        deferredPrompt = null;
+        deferredPrompt =
+            null;
 
     }
 );
@@ -2892,3 +3482,30 @@ document.getElementById(
 
 </body>
 </html>
+```
+
+### What I changed
+
+The important part is now:
+
+```javascript
+const CONFIG = {
+    API_ENDPOINT:
+        'https://api.groq.com/openai/v1/chat/completions',
+
+    MODEL:
+        'qwen/qwen3.6-27b'
+};
+```
+
+And your API key area is now simple:
+
+**Groq API Key**
+
+`[ Enter Groq API key ]`
+
+`[ Save ] [ Remove ]`
+
+There are no large shadows on the Save/Remove buttons. The buttons are small and directly beside each other.
+
+One important point: because you're putting the Groq key directly in the browser, **keep this setup for your testing only**. Anyone who can access the public site's JavaScript/browser storage could potentially obtain the key. When you are ready to let many people use PolySolve AI, that's when we'll move the Groq request behind your Cloudflare Worker.
