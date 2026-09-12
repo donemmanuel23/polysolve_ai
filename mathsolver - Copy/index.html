@@ -6,11 +6,14 @@
     <title>PolySolve AI</title>
     <meta name="theme-color" content="#6366f1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="icon-192.png">
     <link rel="apple-touch-icon" href="icon-192.png">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
@@ -42,13 +45,11 @@
             overflow-x: hidden;
         }
 
-        /* --- Layout --- */
         .app-container {
             display: flex;
             min-height: 100vh;
         }
 
-        /* --- Sidebar Glassmorphism --- */
         .sidebar {
             width: 280px;
             background: var(--glass);
@@ -68,7 +69,6 @@
             padding: 2rem 3rem;
         }
 
-        /* --- Brand & Nav --- */
         .brand-logo {
             font-weight: 700;
             font-size: 1.4rem;
@@ -89,13 +89,13 @@
             margin-bottom: 5px;
         }
 
-        .nav-link:hover, .nav-link.active {
+        .nav-link:hover,
+        .nav-link.active {
             background: #fff;
             color: var(--accent);
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
-        /* --- Top Status Bar --- */
         .status-bar {
             display: flex;
             justify-content: space-between;
@@ -103,7 +103,6 @@
             margin-bottom: 2rem;
         }
 
-        /* --- Modern Card Design --- */
         .neo-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -134,7 +133,6 @@
             opacity: 0.3;
         }
 
-        /* --- Advanced Dropzone --- */
         .dropzone {
             border: 2px dashed #cbd5e1;
             border-radius: 20px;
@@ -142,9 +140,9 @@
             text-align: center;
             transition: 0.3s;
             background: #fdfdff;
-            cursor: pointer; 
+            cursor: pointer;
         }
-        
+
         .dropzone.drag-over {
             border-color: var(--accent);
             background: #f5f3ff;
@@ -159,7 +157,6 @@
             border: 1px solid var(--border);
         }
 
-        /* --- Animated Solve Button --- */
         .btn-solve {
             background: linear-gradient(90deg, #6366f1, #8b5cf6, #6366f1);
             background-size: 200% auto;
@@ -177,34 +174,31 @@
             box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
         }
 
-       /* --- Solution Content Stylings --- */
-.solution-text {
-    color: #334155;
-    line-height: 1.8;
-    font-size: 0.95rem; /* Base text size */
-}
+        .solution-text {
+            color: #334155;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
 
-/* This targets the Step titles (h1, h2, h3, etc.) */
-.solution-text h1, 
-.solution-text h2, 
-.solution-text h3, 
-.solution-text h4 {
-    font-size: 1.1rem; /* Smaller, cleaner header size */
-    font-weight: 700;
-    margin-top: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-main);
-}
+        .solution-text h1,
+        .solution-text h2,
+        .solution-text h3,
+        .solution-text h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
 
-.solution-text code {
-    color: var(--accent);
-    background: #f1f5f9;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.9em; /* Makes LaTeX/Code slightly smaller to match */
-}
+        .solution-text code {
+            color: var(--accent);
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
 
-        /* --- Skeleton Loading --- */
         .skeleton {
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 200% 100%;
@@ -215,11 +209,15 @@
         }
 
         @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
-        /* --- Voice Recording Pulse --- */
         .recording-pulse {
             position: relative;
             z-index: 1;
@@ -241,11 +239,17 @@
         }
 
         @keyframes wave-ripple {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(3.5); opacity: 0; }
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(3.5);
+                opacity: 0;
+            }
         }
 
-        /* --- Custom Notification --- */
         .toast-custom {
             background: #0f172a;
             color: white;
@@ -254,18 +258,22 @@
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
         }
 
-        /* Mobile fallback */
         @media (max-width: 992px) {
-            .sidebar { display: none; }
-            .main-stage { margin-left: 0; padding: 1.5rem; }
+            .sidebar {
+                display: none;
+            }
+
+            .main-stage {
+                margin-left: 0;
+                padding: 1.5rem;
+            }
         }
 
-        /* Mobile sidebar toggle */
-@media (max-width: 992px) {
-    .sidebar {
-        position: fixed;
+        @media (max-width: 992px) {
+            .sidebar {
+                position: fixed;
                 left: -320px;
-        transition: 0.3s;
+                transition: 0.3s;
                 width: 300px;
                 display: grid !important;
                 grid-template-columns: repeat(3, 1fr);
@@ -277,11 +285,11 @@
                 box-shadow: 15px 0 30px rgba(0,0,0,0.1);
                 border-radius: 0 24px 24px 0;
                 border-right: none;
-    }
+            }
 
-    .sidebar.active {
-        left: 0;
-    }
+            .sidebar.active {
+                left: 0;
+            }
 
             .sidebar-overlay {
                 display: none;
@@ -299,23 +307,25 @@
                 display: block;
             }
 
-            .sidebar .brand-logo, 
-            .sidebar .mt-3, 
-            .sidebar #historyList, 
-            .sidebar .mt-4, 
+            .sidebar .brand-logo,
+            .sidebar .mt-3,
+            .sidebar #historyList,
+            .sidebar .mt-4,
             .sidebar .pt-4 {
                 grid-column: span 3;
             }
 
-            .sidebar nav { display: contents; }
+            .sidebar nav {
+                display: contents;
+            }
 
-            .sidebar .nav-link, 
+            .sidebar .nav-link,
             .sidebar .px-3.mb-3 {
                 padding: 0 !important;
                 margin: 0 !important;
             }
 
-            .sidebar .nav-link, 
+            .sidebar .nav-link,
             .sidebar .btn-sm {
                 display: flex !important;
                 flex-direction: column;
@@ -331,43 +341,79 @@
                 color: var(--text-main);
             }
 
-            .sidebar .nav-link i, 
+            .sidebar .nav-link i,
             .sidebar .btn-sm i {
                 margin: 0 0 5px 0 !important;
                 font-size: 1.2rem;
                 color: var(--accent);
             }
-}
-
+        }
     </style>
 </head>
+
 <body>
 
 <div class="app-container">
+
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <aside class="sidebar">
+
         <div class="brand-logo">
             <div style="background: var(--accent); width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
                 <i class="bi bi-cpu text-white"></i>
             </div>
-            <span>PolySolve <span style="font-weight: 400; color: var(--text-muted);">AI</span></span>
+
+            <span>
+                PolySolve
+                <span style="font-weight: 400; color: var(--text-muted);">AI</span>
+            </span>
         </div>
 
         <nav class="nav flex-column mb-auto">
-            <a class="nav-link" href="#" onclick="startNewChat()"><i class="bi bi-plus-lg me-2"></i> New Chat</a>
-            <a class="nav-link active" href="#" onclick="showSection('dashboard')"><i class="bi bi-house-door me-2"></i> Dashboard</a>
-            <div class="mt-3 mb-2 px-3 small text-uppercase fw-bold text-muted" style="font-size: 0.65rem;">Recent Solutions</div>
-            <div id="historyList" class="mb-3">
-                <!-- History items will be injected here -->
-                <p class="px-3 small text-muted italic">No history yet</p>
-            </div>
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal"><i class="bi bi-info-circle me-2"></i> About</a>
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#feedbackModal"><i class="bi bi-chat-left-dots me-2"></i> Feedback</a>
 
-            <!-- Groq API Key -->
+            <a class="nav-link" href="#" onclick="startNewChat()">
+                <i class="bi bi-plus-lg me-2"></i>
+                New Chat
+            </a>
+
+            <a class="nav-link active" href="#" onclick="showSection('dashboard')">
+                <i class="bi bi-house-door me-2"></i>
+                Dashboard
+            </a>
+
+            <div class="mt-3 mb-2 px-3 small text-uppercase fw-bold text-muted" style="font-size: 0.65rem;">
+                Recent Solutions
+            </div>
+
+            <div id="historyList" class="mb-3">
+                <p class="px-3 small text-muted italic">
+                    No history yet
+                </p>
+            </div>
+
+            <a class="nav-link"
+               href="#"
+               data-bs-toggle="modal"
+               data-bs-target="#aboutModal">
+                <i class="bi bi-info-circle me-2"></i>
+                About
+            </a>
+
+            <a class="nav-link"
+               href="#"
+               data-bs-toggle="modal"
+               data-bs-target="#feedbackModal">
+                <i class="bi bi-chat-left-dots me-2"></i>
+                Feedback
+            </a>
+
+            <!-- GROQ API KEY -->
             <div class="mt-3 px-3">
+
                 <label class="small text-muted fw-bold mb-2">
-                    <i class="bi bi-key me-1"></i> Groq API Key
+                    <i class="bi bi-key me-1"></i>
+                    Groq API Key
                 </label>
 
                 <input
@@ -382,662 +428,2467 @@
                     class="btn btn-primary btn-sm w-100 mt-2 rounded-pill"
                     onclick="saveGroqApiKey()"
                 >
-                    <i class="bi bi-save me-1"></i> Save API Key
+                    <i class="bi bi-save me-1"></i>
+                    Save API Key
+                </button>
+
+                <button
+                    class="btn btn-outline-danger btn-sm w-100 mt-2 rounded-pill"
+                    onclick="removeGroqApiKey()"
+                >
+                    <i class="bi bi-trash me-1"></i>
+                    Remove API Key
                 </button>
 
                 <small class="text-muted d-block mt-2" style="font-size: 0.65rem;">
-                    Your API key is stored locally in this browser.
+                    API key is stored locally in this browser for testing.
                 </small>
+
+                <div id="apiKeyStatus"
+                     class="small mt-2"
+                     style="font-size: 0.65rem;">
+                </div>
+
             </div>
+
         </nav>
 
         <div class="px-3 mb-3" id="installContainer" style="display: none;">
-            <button class="btn btn-primary btn-sm w-100 rounded-pill" id="installBtn">
-                <i class="bi bi-download me-2"></i> Install App
+
+            <button
+                class="btn btn-primary btn-sm w-100 rounded-pill"
+                id="installBtn"
+            >
+                <i class="bi bi-download me-2"></i>
+                Install App
             </button>
+
         </div>
 
         <div class="pt-4 text-center">
-            <p class="text-muted" style="font-size: 0.75rem;">Status: <span class="text-success">● AI Online</span></p>
+
+            <p class="text-muted" style="font-size: 0.75rem;">
+                Status:
+                <span class="text-success">
+                    ● AI Online
+                </span>
+            </p>
+
         </div>
+
     </aside>
+
+
     <main class="main-stage">
+
         <header class="status-bar">
-            <button class = "btn btn-light d-lg-none me-2" id="menuToggle">
-    <i class = "bi bi-list" style = "font-size: 1.5rem; "></i>
-</button>
+
+            <button
+                class="btn btn-light d-lg-none me-2"
+                id="menuToggle"
+            >
+                <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+            </button>
+
             <div>
-                <h4 class="fw-bold mb-0">Welcome Scholar!</h4>
-                <p class="text-muted small">Ready to solve some equations?</p>
+
+                <h4 class="fw-bold mb-0">
+                    Welcome Scholar!
+                </h4>
+
+                <p class="text-muted small">
+                    Ready to solve some equations?
+                </p>
+
             </div>
+
             <div class="d-flex gap-3">
-                <button class="btn btn-outline-secondary rounded-pill btn-sm px-3" onclick="toggleDarkMode()" id="themeToggle">
+
+                <button
+                    class="btn btn-outline-secondary rounded-pill btn-sm px-3"
+                    onclick="toggleDarkMode()"
+                    id="themeToggle"
+                >
                     <i class="bi bi-moon-stars"></i>
                 </button>
+
                 <div class="rounded-pill bg-white border px-3 py-1 d-flex align-items-center gap-2">
-                    <span class="small fw-600">Supported by Emmanuel</span>
+
+                    <span class="small fw-600">
+                        Supported by Emmanuel
+                    </span>
+
                 </div>
+
             </div>
+
         </header>
 
+
         <section class="hero-banner">
+
             <div class="row align-items-center">
+
                 <div class="col-lg-7">
-                    <h1 class="display-6 fw-bold mb-3">Universal AI Solver</h1>
-                    <p class="opacity-75 lead mb-0" style="font-size: 1rem;">Upload any problem—math, science, history, or code. Get instant, expert-level breakdowns from a single photo.</p>
+
+                    <h1 class="display-6 fw-bold mb-3">
+                        Universal AI Solver
+                    </h1>
+
+                    <p class="opacity-75 lead mb-0" style="font-size: 1rem;">
+                        Upload any problem—math, science, history, or code.
+                        Get instant, expert-level breakdowns from a single photo.
+                    </p>
+
                 </div>
+
             </div>
+
         </section>
 
+
         <div class="row g-4">
+
             <div class="col-xl-5">
+
                 <div class="neo-card p-4 h-100">
-                    <h6 class="fw-bold mb-4 d-flex align-items-center"><i class="bi bi-plus-circle-dotted me-2 text-primary"></i>New Problem</h6>
+
+                    <h6 class="fw-bold mb-4 d-flex align-items-center">
+
+                        <i class="bi bi-plus-circle-dotted me-2 text-primary"></i>
+
+                        New Problem
+
+                    </h6>
+
 
                     <div id="inputAreaContainer">
+
                         <div class="dropzone mb-3" id="uploadArea">
+
                             <div id="uploadContent">
-                                <i class="bi bi-plus-circle text-primary mb-3" style="font-size: 3rem;"></i>
-                                <h6 class="fw-bold">Add files, upload image</h6>
-                                <p class="text-muted small">PNG, JPG or Screenshot</p>
-                                <button id="browseBtn" class="btn btn-light border btn-sm mt-2 px-4 rounded-pill">Browse Files</button>
+
+                                <i
+                                    class="bi bi-plus-circle text-primary mb-3"
+                                    style="font-size: 3rem;"
+                                ></i>
+
+                                <h6 class="fw-bold">
+                                    Add files, upload image
+                                </h6>
+
+                                <p class="text-muted small">
+                                    PNG, JPG or Screenshot
+                                </p>
+
+                                <button
+                                    id="browseBtn"
+                                    class="btn btn-light border btn-sm mt-2 px-4 rounded-pill"
+                                >
+                                    Browse Files
+                                </button>
+
                             </div>
-                            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+
+                            <input
+                                type="file"
+                                id="fileInput"
+                                accept="image/*"
+                                style="display: none;"
+                            >
+
                         </div>
+
                     </div>
+
 
                     <div id="imagePreview" style="display: none;">
-                        <img id="previewImg" class="preview-image" alt="Problem Preview">
-                        <button class="btn btn-link text-muted btn-sm w-100 mb-3" onclick="clearImage()">Discard Image</button>
+
+                        <img
+                            id="previewImg"
+                            class="preview-image"
+                            alt="Problem Preview"
+                        >
+
+                        <button
+                            class="btn btn-link text-muted btn-sm w-100 mb-3"
+                            onclick="clearImage()"
+                        >
+                            Discard Image
+                        </button>
+
                     </div>
+
 
                     <div class="mb-3">
-                        <label class="small text-muted fw-bold mb-2">Problem Description / Text Input</label>
+
+                        <label class="small text-muted fw-bold mb-2">
+                            Problem Description / Text Input
+                        </label>
+
                         <div class="input-group input-group-sm">
-                            <textarea class="form-control rounded-3 border-light shadow-sm" id="customInstructions" placeholder="Type your problem here or add instructions for the uploaded image..." rows="3"></textarea>
-                            <button class="btn btn-outline-primary border-light shadow-sm" type="button" id="voiceBtn" onclick="startVoiceInput()">
+
+                            <textarea
+                                class="form-control rounded-3 border-light shadow-sm"
+                                id="customInstructions"
+                                placeholder="Type your problem here or add instructions for the uploaded image..."
+                                rows="3"
+                            ></textarea>
+
+                            <button
+                                class="btn btn-outline-primary border-light shadow-sm"
+                                type="button"
+                                id="voiceBtn"
+                                onclick="startVoiceInput()"
+                            >
                                 <i class="bi bi-mic"></i>
                             </button>
+
                         </div>
+
                     </div>
 
-                    <div class="mb-3 d-flex flex-wrap gap-2" id="suggestedPrompts">
-                        <span class="badge rounded-pill bg-light text-muted border py-2 px-3 cursor-pointer" onclick="usePrompt('Explain step-by-step')">Step-by-step</span>
-                        <span class="badge rounded-pill bg-light text-muted border py-2 px-3 cursor-pointer" onclick="usePrompt('Verify my answer')">Verify Answer</span>
-                        <span class="badge rounded-pill bg-light text-muted border py-2 px-3 cursor-pointer" onclick="usePrompt('Summarize key concepts')">Summarize</span>
+
+                    <div
+                        class="mb-3 d-flex flex-wrap gap-2"
+                        id="suggestedPrompts"
+                    >
+
+                        <span
+                            class="badge rounded-pill bg-light text-muted border py-2 px-3 cursor-pointer"
+                            onclick="usePrompt('Explain step-by-step')"
+                        >
+                            Step-by-step
+                        </span>
+
+                        <span
+                            class="badge rounded-pill bg-light text-muted border py-2 px-3 cursor-pointer"
+                            onclick="usePrompt('Verify my answer')"
+                        >
+                            Verify Answer
+                        </span>
+
+                        <span
+                            class="badge rounded-pill bg-light text-muted border py-2 px-3 cursor-pointer"
+                            onclick="usePrompt('Summarize key concepts')"
+                        >
+                            Summarize
+                        </span>
+
                     </div>
 
-                    <button class="btn btn-solve w-100 mb-3" id="solveBtn" onclick="solveMathProblem()">
-                        <i class="bi bi-stars me-2"></i>Generate Solution
+
+                    <button
+                        class="btn btn-solve w-100 mb-3"
+                        id="solveBtn"
+                        onclick="solveMathProblem()"
+                    >
+                        <i class="bi bi-stars me-2"></i>
+                        Generate Solution
                     </button>
 
-                    <div class="text-center py-4" id="loadingSpinner" style="display: none;">
-                        <div class="spinner-border text-primary" role="status"></div>
-                        <p class="mt-3 text-muted">Thinking...</p>
+
+                    <div
+                        class="text-center py-4"
+                        id="loadingSpinner"
+                        style="display: none;"
+                    >
+
+                        <div
+                            class="spinner-border text-primary"
+                            role="status"
+                        ></div>
+
+                        <p class="mt-3 text-muted">
+                            Thinking...
+                        </p>
+
                     </div>
+
                 </div>
+
             </div>
+
 
             <div class="col-xl-7">
-                <div class="neo-card p-4 h-100" id="placeholderResult">
+
+                <div
+                    class="neo-card p-4 h-100"
+                    id="placeholderResult"
+                >
+
                     <div class="d-flex flex-column align-items-center justify-content-center h-100 text-center py-5">
+
                         <div class="bg-light rounded-circle p-4 mb-3">
-                            <i class="bi bi-layout-text-sidebar-reverse text-muted" style="font-size: 2rem;"></i>
+
+                            <i
+                                class="bi bi-layout-text-sidebar-reverse text-muted"
+                                style="font-size: 2rem;"
+                            ></i>
+
                         </div>
-                        <h6 class="fw-bold text-muted">Analysis Window</h6>
-                        <p class="text-muted small px-5">Your step-by-step breakdown will appear here once the AI processes the image.</p>
+
+                        <h6 class="fw-bold text-muted">
+                            Analysis Window
+                        </h6>
+
+                        <p class="text-muted small px-5">
+                            Your step-by-step breakdown will appear here
+                            once the AI processes the image.
+                        </p>
+
                     </div>
+
                 </div>
 
-                <div class="neo-card p-4 h-100" id="resultsCard" style="display: none;">
+
+                <div
+                    class="neo-card p-4 h-100"
+                    id="resultsCard"
+                    style="display: none;"
+                >
+
                     <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
-                        <h6 class="fw-bold mb-0">Solution Breakdown</h6>
+
+                        <h6 class="fw-bold mb-0">
+                            Solution Breakdown
+                        </h6>
+
                         <div class="d-flex gap-2">
-                            <button class="btn btn-light btn-sm rounded-pill" onclick="copySolution()"><i class="bi bi-clipboard"></i></button>
-                            <button class="btn btn-light btn-sm rounded-pill" onclick="exportToTXT()" title="Export as TXT"><i class="bi bi-file-earmark-text"></i></button>
-                            <button class="btn btn-light btn-sm rounded-pill" onclick="exportToPDF()"><i class="bi bi-file-earmark-pdf"></i></button>
-                            <button class="btn btn-light btn-sm rounded-pill"><i class="bi bi-share"></i></button>
+
+                            <button
+                                class="btn btn-light btn-sm rounded-pill"
+                                onclick="copySolution()"
+                            >
+                                <i class="bi bi-clipboard"></i>
+                            </button>
+
+                            <button
+                                class="btn btn-light btn-sm rounded-pill"
+                                onclick="exportToTXT()"
+                                title="Export as TXT"
+                            >
+                                <i class="bi bi-file-earmark-text"></i>
+                            </button>
+
+                            <button
+                                class="btn btn-light btn-sm rounded-pill"
+                                onclick="exportToPDF()"
+                            >
+                                <i class="bi bi-file-earmark-pdf"></i>
+                            </button>
+
+                            <button
+                                class="btn btn-light btn-sm rounded-pill"
+                                onclick="shareSolution()"
+                            >
+                                <i class="bi bi-share"></i>
+                            </button>
+
                         </div>
+
                     </div>
-                    <div class="solution-text" id="solutionResult">
+
+
+                    <div
+                        class="solution-text"
+                        id="solutionResult"
+                    ></div>
+
+
+                    <div
+                        id="streamingIndicator"
+                        class="mt-2"
+                        style="display: none;"
+                    >
+
+                        <div
+                            class="skeleton"
+                            style="width: 100%;"
+                        ></div>
+
+                        <div
+                            class="skeleton"
+                            style="width: 80%;"
+                        ></div>
+
+                        <div
+                            class="skeleton"
+                            style="width: 40%;"
+                        ></div>
+
                     </div>
-                    <div id="streamingIndicator" class="mt-2" style="display: none;">
-                        <div class="skeleton" style="width: 100%;"></div>
-                        <div class="skeleton" style="width: 80%;"></div>
-                        <div class="skeleton" style="width: 40%;"></div>
-                    </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </main>
+
 </div>
 
-<!-- Modals for Branding & Trust -->
-<div class="modal fade" id="aboutModal" tabindex="-1">
+
+<!-- ABOUT MODAL -->
+
+<div
+    class="modal fade"
+    id="aboutModal"
+    tabindex="-1"
+>
+
     <div class="modal-dialog modal-dialog-centered">
+
         <div class="modal-content rounded-4 border-0 shadow">
+
             <div class="modal-header border-0">
-                <h5 class="modal-title fw-bold">About PolySolve AI</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                <h5 class="modal-title fw-bold">
+                    About PolySolve AI
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                ></button>
+
             </div>
+
             <div class="modal-body text-muted">
-                PolySolve AI is a professional academic assistant powered by Emmanuel group of technology.
-                Get yourself the app on your device by simply tapping "Add to home screen" which is found in the three dots at the right top of your screen.
+
+                PolySolve AI is a professional academic assistant
+                powered by Emmanuel group of technology.
+
+                Get yourself the app on your device by simply tapping
+                "Add to home screen" which is found in the three dots
+                at the right top of your screen.
+
             </div>
+
         </div>
+
     </div>
+
 </div>
 
-<div class="modal fade" id="feedbackModal" tabindex="-1">
+
+<!-- FEEDBACK MODAL -->
+
+<div
+    class="modal fade"
+    id="feedbackModal"
+    tabindex="-1"
+>
+
     <div class="modal-dialog modal-dialog-centered">
+
         <div class="modal-content rounded-4 border-0 shadow">
+
             <div class="modal-header border-0">
-                <h5 class="modal-title fw-bold">AI Usability Feedback</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                <h5 class="modal-title fw-bold">
+                    AI Usability Feedback
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                ></button>
+
             </div>
+
             <div class="modal-body text-muted">
-                <p class="small mb-3">How can we improve the AI's guidance and usability? Your feedback helps us train better models.</p>
-                <textarea id="feedbackText" class="form-control rounded-3 mb-3" rows="4" placeholder="Share your experience or report a logic error..."></textarea>
-                <button class="btn btn-primary w-100 rounded-pill" onclick="submitFeedback()" data-bs-dismiss="modal">Submit Feedback</button>
-                <p class="text-center mt-3 mb-0 small"><a href="mailto:emmanuelademun7@gmail.com" class="text-decoration-none text-muted">Need direct support? Email us.</a></p>
+
+                <p class="small mb-3">
+                    How can we improve the AI's guidance and usability?
+                    Your feedback helps us train better models.
+                </p>
+
+                <textarea
+                    id="feedbackText"
+                    class="form-control rounded-3 mb-3"
+                    rows="4"
+                    placeholder="Share your experience or report a logic error..."
+                ></textarea>
+
+                <button
+                    class="btn btn-primary w-100 rounded-pill"
+                    onclick="submitFeedback()"
+                    data-bs-dismiss="modal"
+                >
+                    Submit Feedback
+                </button>
+
+                <p class="text-center mt-3 mb-0 small">
+
+                    <a
+                        href="mailto:emmanuelademun7@gmail.com"
+                        class="text-decoration-none text-muted"
+                    >
+                        Need direct support? Email us.
+                    </a>
+
+                </p>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
+
+
+<!-- JAVASCRIPT LIBRARIES -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/marked@9.1.2/marked.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+
 
 <script>
 
-    // Toggle sidebar on mobile
-    const sidebar = document.querySelector('.sidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-    const menuToggle = document.getElementById('menuToggle');
+/* =========================================================
+   MOBILE SIDEBAR
+========================================================= */
 
-    function toggleMenu() {
-        sidebar.classList.toggle('active');
-        overlay.classList.toggle('active');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+const menuToggle = document.getElementById('menuToggle');
+
+function toggleMenu() {
+
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+
+}
+
+menuToggle.addEventListener('click', toggleMenu);
+
+overlay.addEventListener('click', toggleMenu);
+
+
+function startNewChat() {
+
+    clearImage();
+
+    chatContext = [];
+
+    if (window.innerWidth < 992) {
+
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+
     }
 
-    menuToggle.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', toggleMenu);
+    showNotification('New chat started', 'info');
 
-    function startNewChat() {
-        clearImage();
-        if (window.innerWidth < 992) {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
+}
+
+
+/* =========================================================
+   GLOBAL VARIABLES
+========================================================= */
+
+let uploadedImage = null;
+
+let deferredPrompt;
+
+let lastRequestTime = 0;
+
+let chatContext = [];
+
+const RATE_LIMIT_MS = 3000;
+
+
+/* =========================================================
+   GROQ CONFIGURATION
+========================================================= */
+
+/*
+    IMPORTANT:
+
+    We are NOT using /api/solve here.
+
+    The browser sends the request directly to Groq.
+
+    This is suitable for your current testing.
+
+    Do NOT expose a real API key this way on a public
+    production application.
+*/
+
+const CONFIG = {
+
+    API_ENDPOINT: 'https://api.groq.com/openai/v1/chat/completions',
+
+    MODEL: 'meta-llama/llama-4-scout-17b-16e-instruct'
+
+};
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+function toggleDarkMode() {
+
+    const html = document.documentElement;
+
+    const isDark =
+        html.getAttribute('data-bs-theme') === 'dark';
+
+    html.setAttribute(
+        'data-bs-theme',
+        isDark ? 'light' : 'dark'
+    );
+
+    document.getElementById('themeToggle').innerHTML =
+        isDark
+            ? '<i class="bi bi-moon-stars"></i>'
+            : '<i class="bi bi-sun"></i>';
+
+    localStorage.setItem(
+        'theme',
+        isDark ? 'light' : 'dark'
+    );
+
+}
+
+
+/* =========================================================
+   GROQ API KEY
+========================================================= */
+
+function saveGroqApiKey() {
+
+    const input =
+        document.getElementById('groqApiKey');
+
+    const apiKey =
+        input.value.trim();
+
+    if (!apiKey) {
+
+        showNotification(
+            'Please enter your Groq API key',
+            'warning'
+        );
+
+        return;
+
+    }
+
+    if (!apiKey.startsWith('gsk_')) {
+
+        showNotification(
+            'This does not look like a valid Groq API key',
+            'warning'
+        );
+
+        return;
+
+    }
+
+    localStorage.setItem(
+        'groq_api_key',
+        apiKey
+    );
+
+    input.value = '';
+
+    updateApiKeyStatus();
+
+    showNotification(
+        'Groq API key saved successfully',
+        'info'
+    );
+
+}
+
+
+function getGroqApiKey() {
+
+    return localStorage.getItem('groq_api_key');
+
+}
+
+
+function removeGroqApiKey() {
+
+    localStorage.removeItem('groq_api_key');
+
+    updateApiKeyStatus();
+
+    showNotification(
+        'Groq API key removed',
+        'info'
+    );
+
+}
+
+
+function updateApiKeyStatus() {
+
+    const status =
+        document.getElementById('apiKeyStatus');
+
+    const key =
+        getGroqApiKey();
+
+    if (key) {
+
+        status.innerHTML =
+            '<span class="text-success">' +
+            '<i class="bi bi-check-circle me-1"></i>' +
+            'API key saved' +
+            '</span>';
+
+    } else {
+
+        status.innerHTML =
+            '<span class="text-danger">' +
+            '<i class="bi bi-x-circle me-1"></i>' +
+            'No API key saved' +
+            '</span>';
+
+    }
+
+}
+
+
+/* =========================================================
+   PAGE LOAD
+========================================================= */
+
+window.addEventListener('load', function() {
+
+    if (localStorage.getItem('theme') === 'dark') {
+
+        toggleDarkMode();
+
+    }
+
+    renderHistory();
+
+    updateApiKeyStatus();
+
+
+    /* Keyboard shortcuts */
+
+    window.addEventListener('keydown', (e) => {
+
+        if (
+            (e.ctrlKey || e.metaKey) &&
+            e.key === 'Enter'
+        ) {
+
+            solveMathProblem();
+
         }
-        showNotification('New chat started', 'info');
+
+        if (
+            (e.ctrlKey || e.metaKey) &&
+            e.key === 'm'
+        ) {
+
+            e.preventDefault();
+
+            startNewChat();
+
+        }
+
+        if (e.key === 'Escape') {
+
+            clearImage();
+
+        }
+
+    });
+
+
+    /* Paste image */
+
+    document.addEventListener('paste', (e) => {
+
+        for (const item of e.clipboardData.items) {
+
+            if (
+                item.type.indexOf('image') === 0
+            ) {
+
+                const file =
+                    item.getAsFile();
+
+                if (file) {
+
+                    handleFile(file);
+
+                }
+
+            }
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   FILE UPLOAD
+========================================================= */
+
+const uploadArea =
+    document.getElementById('uploadArea');
+
+const fileInput =
+    document.getElementById('fileInput');
+
+const browseBtn =
+    document.getElementById('browseBtn');
+
+
+uploadArea.addEventListener('click', (e) => {
+
+    if (e.target === browseBtn) {
+
+        return;
+
     }
 
-    let uploadedImage = null;
-    let deferredPrompt;
-    let lastRequestTime = 0;
-    
-    let chatContext = []; // Persists conversation history
-    const RATE_LIMIT_MS = 3000; // 3 second cooldown
+    fileInput.click();
 
-    // Deployment Configuration
-    const CONFIG = {
-        // If running on localhost, use the local worker. 
-        // Otherwise, use the relative path or a hardcoded production URL.
-        API_ENDPOINT: (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-            ? '/api/solve'
-            : '/api/solve' // Cloudflare Pages automatically routes /api to _worker.js
+});
+
+
+browseBtn.addEventListener(
+    'click',
+    () => fileInput.click()
+);
+
+
+uploadArea.addEventListener(
+    'dragover',
+    (e) => {
+
+        e.preventDefault();
+
+        uploadArea.classList.add('drag-over');
+
+    }
+);
+
+
+uploadArea.addEventListener(
+    'dragleave',
+    () => {
+
+        uploadArea.classList.remove(
+            'drag-over'
+        );
+
+    }
+);
+
+
+uploadArea.addEventListener(
+    'drop',
+    (e) => {
+
+        e.preventDefault();
+
+        uploadArea.classList.remove(
+            'drag-over'
+        );
+
+        if (
+            e.dataTransfer.files.length > 0
+        ) {
+
+            handleFile(
+                e.dataTransfer.files[0]
+            );
+
+        }
+
+    }
+);
+
+
+fileInput.addEventListener(
+    'change',
+    (e) => {
+
+        if (e.target.files.length > 0) {
+
+            handleFile(
+                e.target.files[0]
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   IMAGE PROCESSING
+========================================================= */
+
+async function handleFile(file) {
+
+    if (!file.type.startsWith('image/')) {
+
+        return showNotification(
+            'Images only',
+            'danger'
+        );
+
+    }
+
+    const img = new Image();
+
+    const objectUrl =
+        URL.createObjectURL(file);
+
+    img.src = objectUrl;
+
+    img.onload = () => {
+
+        const canvas =
+            document.createElement('canvas');
+
+        const MAX_WIDTH = 1200;
+
+        const scale =
+            Math.min(
+                1,
+                MAX_WIDTH / img.width
+            );
+
+        canvas.width =
+            img.width * scale;
+
+        canvas.height =
+            img.height * scale;
+
+        const ctx =
+            canvas.getContext('2d');
+
+        ctx.drawImage(
+            img,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        uploadedImage =
+            canvas.toDataURL(
+                'image/jpeg',
+                0.85
+            );
+
+        document.getElementById(
+            'imagePreview'
+        ).style.display = 'block';
+
+        document.getElementById(
+            'previewImg'
+        ).src = uploadedImage;
+
+        document.getElementById(
+            'uploadArea'
+        ).style.display = 'none';
+
+        URL.revokeObjectURL(objectUrl);
+
     };
 
-    function toggleDarkMode() {
-        const html = document.documentElement;
-        const isDark = html.getAttribute('data-bs-theme') === 'dark';
-        html.setAttribute('data-bs-theme', isDark ? 'light' : 'dark');
-        document.getElementById('themeToggle').innerHTML = isDark ? '<i class="bi bi-moon-stars"></i>' : '<i class="bi bi-sun"></i>';
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+}
+
+
+/* =========================================================
+   CLEAR IMAGE
+========================================================= */
+
+function clearImage() {
+
+    uploadedImage = null;
+
+    chatContext = [];
+
+    document.getElementById(
+        'imagePreview'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'uploadArea'
+    ).style.display = 'block';
+
+    document.getElementById(
+        'resultsCard'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'placeholderResult'
+    ).style.display = 'block';
+
+    document.getElementById(
+        'solutionResult'
+    ).innerHTML = '';
+
+    document.getElementById(
+        'customInstructions'
+    ).value = '';
+
+    fileInput.value = '';
+
+}
+
+
+/* =========================================================
+   SUGGESTED PROMPTS
+========================================================= */
+
+function usePrompt(text) {
+
+    document.getElementById(
+        'customInstructions'
+    ).value = text;
+
+}
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+function playTone(freq, duration) {
+
+    try {
+
+        const audioCtx =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+        const oscillator =
+            audioCtx.createOscillator();
+
+        const gainNode =
+            audioCtx.createGain();
+
+        oscillator.type = 'sine';
+
+        oscillator.frequency.setValueAtTime(
+            freq,
+            audioCtx.currentTime
+        );
+
+        gainNode.gain.setValueAtTime(
+            0.1,
+            audioCtx.currentTime
+        );
+
+        gainNode.gain.exponentialRampToValueAtTime(
+            0.01,
+            audioCtx.currentTime + duration
+        );
+
+        oscillator.connect(gainNode);
+
+        gainNode.connect(
+            audioCtx.destination
+        );
+
+        oscillator.start();
+
+        oscillator.stop(
+            audioCtx.currentTime + duration
+        );
+
+    } catch (e) {
+
+        console.warn(
+            "Audio feedback failed:",
+            e
+        );
+
     }
 
-    window.addEventListener('load', function() {
-        if (localStorage.getItem('theme') === 'dark') toggleDarkMode();
-        renderHistory();
+}
 
-        // Global Keyboard Shortcuts
-        window.addEventListener('keydown', (e) => {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-                solveMathProblem();
-            }
-            if ((e.ctrlKey || e.metaKey) && e.key === 'm') {
-                e.preventDefault();
-                startNewChat();
-            }
-            if (e.key === 'Escape') {
-                clearImage();
-            }
-        });
 
-        // Handle image paste
-        document.addEventListener('paste', (e) => {
-            for (const item of e.clipboardData.items) {
-                if (item.type.indexOf('image') === 0) {
-                    const file = item.getAsFile();
-                    if (file) handleFile(file);
-                }
-            }
-        });
-    });
+/* =========================================================
+   VOICE INPUT
+========================================================= */
 
-    const uploadArea = document.getElementById('uploadArea');
-    const fileInput = document.getElementById('fileInput');
-    const browseBtn = document.getElementById('browseBtn');
+let recognitionInstance = null;
 
-    // Making the whole area clickable for better UX
-    uploadArea.addEventListener('click', (e) => {
-        // Prevent double trigger if clicking the actual browse button
-        if (e.target === browseBtn) return;
-        fileInput.click();
-    });
-    
-    browseBtn.addEventListener('click', () => fileInput.click());
+let isManualStop = false;
 
-    // BOX handles visual drag feedback and drops
-    uploadArea.addEventListener('dragover', (e) => { 
-        e.preventDefault(); 
-        uploadArea.classList.add('drag-over'); 
-    });
-    
-    uploadArea.addEventListener('dragleave', () => { 
-        uploadArea.classList.remove('drag-over'); 
-    });
-    
-    uploadArea.addEventListener('drop', (e) => {
-        e.preventDefault();
-        uploadArea.classList.remove('drag-over');
-        if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
-    });
+let isVoiceRestarting = false;
 
-    fileInput.addEventListener('change', (e) => { if (e.target.files.length > 0) handleFile(e.target.files[0]); });
 
-    async function handleFile(file) {
-        if (!file.type.startsWith('image/')) return showNotification('Images only', 'danger');
-        
-        // Professional image compression for faster API calls
-        const img = new Image();
-        const objectUrl = URL.createObjectURL(file);
-        img.src = objectUrl;
-        
-        img.onload = () => {
-            const canvas = document.createElement('canvas');
-            const MAX_WIDTH = 1200;
-            const scale = Math.min(1, MAX_WIDTH / img.width);
-            canvas.width = img.width * scale;
-            canvas.height = img.height * scale;
-            
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            
-            uploadedImage = canvas.toDataURL('image/jpeg', 0.85);
-            document.getElementById('imagePreview').style.display = 'block';
-            document.getElementById('previewImg').src = uploadedImage;
-            document.getElementById('uploadArea').style.display = 'none';
-            URL.revokeObjectURL(objectUrl); // Memory management
-        };
+function startVoiceInput() {
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+
+        return showNotification(
+            'Voice not supported',
+            'danger'
+        );
+
     }
 
-    function clearImage() {
-        uploadedImage = null;
-        chatContext = []; // Reset AI memory on explicit clear
-        document.getElementById('imagePreview').style.display = 'none';
-        document.getElementById('uploadArea').style.display = 'block';
-        document.getElementById('resultsCard').style.display = 'none';
-        document.getElementById('placeholderResult').style.display = 'block';
-        document.getElementById('solutionResult').innerHTML = '';
-        document.getElementById('customInstructions').value = '';
-        fileInput.value = '';
+    const voiceBtn =
+        document.getElementById('voiceBtn');
+
+
+    if (recognitionInstance) {
+
+        isManualStop = true;
+
+        recognitionInstance.stop();
+
+        return;
+
     }
 
-    function usePrompt(text) {
-        document.getElementById('customInstructions').value = text;
-    }
 
-    // Helper to generate a clean synthetic beep
-    function playTone(freq, duration) {
-        try {
-            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            oscillator.type = 'sine';
-            oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime);
-            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
-            oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            oscillator.start();
-            oscillator.stop(audioCtx.currentTime + duration);
-        } catch (e) { console.warn("Audio feedback failed:", e); }
-    }
+    isManualStop = false;
 
-    let recognitionInstance = null;
-    let isManualStop = false;
-    let isVoiceRestarting = false;
+    isVoiceRestarting = false;
 
-    function startVoiceInput() {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (!SpeechRecognition) return showNotification('Voice not supported', 'danger');
-        
-        const voiceBtn = document.getElementById('voiceBtn');
+    const recognition =
+        new SpeechRecognition();
 
-        // Toggle logic: If already listening, stop it manually
-        if (recognitionInstance) {
-            isManualStop = true;
-            recognitionInstance.stop();
-            return;
+    recognition.continuous = true;
+
+    recognitionInstance =
+        recognition;
+
+
+    recognition.onstart = () => {
+
+        if (!isVoiceRestarting) {
+
+            playTone(
+                660,
+                0.15
+            );
+
         }
+
+        voiceBtn.classList.add(
+            'recording-pulse'
+        );
+
+        voiceBtn.classList.replace(
+            'btn-outline-primary',
+            'btn-danger'
+        );
+
+        if (!isVoiceRestarting) {
+
+            showNotification(
+                'Listening... Click mic again to finish',
+                'info'
+            );
+
+        }
+
+        isVoiceRestarting = false;
+
+    };
+
+
+    recognition.onresult = (event) => {
+
+        let transcript = '';
+
+        for (
+            let i = event.resultIndex;
+            i < event.results.length;
+            ++i
+        ) {
+
+            transcript +=
+                event.results[i][0].transcript;
+
+        }
+
+        const area =
+            document.getElementById(
+                'customInstructions'
+            );
+
+        area.value =
+            (
+                area.value +
+                ' ' +
+                transcript
+            ).trim();
+
+    };
+
+
+    recognition.onend = () => {
+
+        if (
+            !isManualStop &&
+            recognitionInstance
+        ) {
+
+            isVoiceRestarting = true;
+
+            try {
+
+                recognition.start();
+
+                return;
+
+            } catch (e) {
+
+                recognitionInstance = null;
+
+            }
+
+        }
+
+        playTone(
+            440,
+            0.15
+        );
+
+        voiceBtn.classList.remove(
+            'recording-pulse'
+        );
+
+        voiceBtn.classList.replace(
+            'btn-danger',
+            'btn-outline-primary'
+        );
+
+
+        if (
+            isManualStop &&
+            document
+                .getElementById(
+                    'customInstructions'
+                )
+                .value.trim()
+        ) {
+
+            solveMathProblem();
+
+        }
+
+        recognitionInstance = null;
 
         isManualStop = false;
-        isVoiceRestarting = false;
-        const recognition = new SpeechRecognition();
-        recognition.continuous = true; // Prevents the browser from stopping automatically
-        recognitionInstance = recognition;
-        
-        recognition.onstart = () => {
-            if (!isVoiceRestarting) playTone(660, 0.15);
-            voiceBtn.classList.add('recording-pulse');
-            voiceBtn.classList.replace('btn-outline-primary', 'btn-danger');
-            if (!isVoiceRestarting) showNotification('Listening... Click mic again to finish', 'info');
-            isVoiceRestarting = false;
-        };
-        
-        recognition.onresult = (event) => {
-            let transcript = '';
-            for (let i = event.resultIndex; i < event.results.length; ++i) {
-                transcript += event.results[i][0].transcript;
-            }
-            const area = document.getElementById('customInstructions');
-            area.value = (area.value + ' ' + transcript).trim();
-        };
-        
-        recognition.onend = () => {
-            // If the browser stopped listening but the user didn't click stop, restart it immediately
-            if (!isManualStop && recognitionInstance) {
-                isVoiceRestarting = true;
-                try { recognition.start(); return; } catch (e) { recognitionInstance = null; }
-            }
 
-            playTone(440, 0.15); // Lower pitch for 'Stop'
-            voiceBtn.classList.remove('recording-pulse');
-            voiceBtn.classList.replace('btn-danger', 'btn-outline-primary');
-            
-            // Trigger the AI solver only when the user manually stops recording
-            if (isManualStop && document.getElementById('customInstructions').value.trim()) {
-                solveMathProblem();
-            }
-            recognitionInstance = null;
-            isManualStop = false;
-        };
-        
-        try {
-            recognition.start();
-        } catch (e) {
-            recognitionInstance = null;
-        }
+    };
+
+
+    try {
+
+        recognition.start();
+
+    } catch (e) {
+
+        recognitionInstance = null;
+
     }
 
-    async function solveMathProblem() {
-        const customMsg = document.getElementById('customInstructions').value.trim();
-        
-        if (!uploadedImage && !customMsg) return showNotification('Please upload an image or type a problem', 'warning');
-        
-        // Rate Limiting Logic
-        const now = Date.now();
-        if (now - lastRequestTime < RATE_LIMIT_MS) {
-            return showNotification(`Please wait ${Math.ceil((RATE_LIMIT_MS - (now - lastRequestTime))/1000)}s`, 'warning');
-        }
-        lastRequestTime = now;
-        
-        document.getElementById('loadingSpinner').style.display = 'block';
-        document.getElementById('solveBtn').disabled = true;
-        document.getElementById('placeholderResult').style.display = 'none';
-        document.getElementById('resultsCard').style.display = 'block';
-        document.getElementById('solutionResult').innerHTML = '';
-        document.getElementById('streamingIndicator').style.display = 'block';
+}
 
-        // Construct the prompt and message content
-        const systemPrompt = `You are a world-class academic tutor and expert problem solver. 
-Your goal is to provide 100% accurate, logically sound, and pedagogical solutions.
+
+/* =========================================================
+   MAIN AI SOLVER
+========================================================= */
+
+async function solveMathProblem() {
+
+    const customMsg =
+        document
+            .getElementById(
+                'customInstructions'
+            )
+            .value
+            .trim();
+
+
+    if (
+        !uploadedImage &&
+        !customMsg
+    ) {
+
+        return showNotification(
+            'Please upload an image or type a problem',
+            'warning'
+        );
+
+    }
+
+
+    /* Get saved API key */
+
+    const apiKey =
+        getGroqApiKey();
+
+
+    if (!apiKey) {
+
+        showNotification(
+            'Please save your Groq API key first',
+            'warning'
+        );
+
+        document
+            .getElementById(
+                'groqApiKey'
+            )
+            .focus();
+
+        return;
+
+    }
+
+
+    /* Rate limiting */
+
+    const now =
+        Date.now();
+
+    if (
+        now - lastRequestTime <
+        RATE_LIMIT_MS
+    ) {
+
+        return showNotification(
+            `Please wait ${Math.ceil(
+                (
+                    RATE_LIMIT_MS -
+                    (
+                        now -
+                        lastRequestTime
+                    )
+                ) / 1000
+            )}s`,
+            'warning'
+        );
+
+    }
+
+    lastRequestTime = now;
+
+
+    /* UI loading */
+
+    document.getElementById(
+        'loadingSpinner'
+    ).style.display = 'block';
+
+    document.getElementById(
+        'solveBtn'
+    ).disabled = true;
+
+    document.getElementById(
+        'placeholderResult'
+    ).style.display = 'none';
+
+    document.getElementById(
+        'resultsCard'
+    ).style.display = 'block';
+
+    document.getElementById(
+        'solutionResult'
+    ).innerHTML = '';
+
+    document.getElementById(
+        'streamingIndicator'
+    ).style.display = 'block';
+
+
+    /* System instructions */
+
+    const systemPrompt = `
+You are a world-class academic tutor and expert problem solver.
+
+Your goal is to provide accurate, logically sound, clear,
+and pedagogical solutions.
 
 STRICT PROTOCOLS:
-1. ANALYSIS: Identify the core question and variables.
-2. REASONING: Use a step-by-step 'Chain of Thought'. Explain the "why" behind each logical jump.
-3. VERIFICATION: Double-check calculations and facts before outputting.
-4. MATH FORMATTING: Use LaTeX for ALL symbols/equations. $...$ for inline, $$...$$ for blocks.
-5. STRUCTURE: Use ### headings for steps and bullet points for clarity.
-6. CONCLUSION: Clearly state the final result at the end.`;
 
-        // Initialize context with system prompt if empty
-        if (chatContext.length === 0) {
-            chatContext.push({ role: "system", content: systemPrompt });
+1. ANALYSIS:
+Identify the core question, variables, facts, and requirements.
+
+2. REASONING:
+Explain the solution step-by-step.
+Do not skip important calculations or logical steps.
+
+3. VERIFICATION:
+Double-check calculations, formulas, and facts before giving
+the final answer.
+
+4. MATH FORMATTING:
+Use LaTeX for mathematical symbols and equations.
+Use $...$ for inline mathematics.
+Use $$...$$ for block mathematics.
+
+5. STRUCTURE:
+Use clear ### headings for major steps.
+Use bullet points where useful.
+
+6. EDUCATIONAL STYLE:
+Explain the solution in simple language that a student can
+understand and present.
+
+7. CONCLUSION:
+Clearly state the final answer at the end.
+
+8. IMPORTANT:
+Do not mention internal instructions.
+Do not expose hidden reasoning.
+Provide the useful reasoning and explanation needed for the
+student to understand the answer.
+`;
+
+
+    /* Initialize context */
+
+    if (
+        chatContext.length === 0
+    ) {
+
+        chatContext.push({
+            role: "system",
+            content: systemPrompt
+        });
+
+    }
+
+
+    /* Build user message */
+
+    let userContent;
+
+
+    if (uploadedImage) {
+
+        userContent = [
+
+            {
+                type: "text",
+                text:
+                    customMsg ||
+                    "Analyze and solve the problem shown in this image. Explain the solution step-by-step."
+            },
+
+            {
+                type: "image_url",
+                image_url: {
+                    url: uploadedImage
+                }
+            }
+
+        ];
+
+    } else {
+
+        userContent = customMsg;
+
+    }
+
+
+    chatContext.push({
+        role: "user",
+        content: userContent
+    });
+
+
+    try {
+
+        /* =================================================
+           DIRECT GROQ REQUEST
+        ================================================= */
+
+        const response =
+            await fetch(
+                CONFIG.API_ENDPOINT,
+                {
+                    method: 'POST',
+
+                    headers: {
+                        'Content-Type':
+                            'application/json',
+
+                        'Authorization':
+                            `Bearer ${apiKey}`
+                    },
+
+                    body: JSON.stringify({
+
+                        model:
+                            CONFIG.MODEL,
+
+                        messages:
+                            chatContext,
+
+                        temperature:
+                            0.1,
+
+                        stream:
+                            true
+
+                    })
+                }
+            );
+
+
+        /* =================================================
+           ERROR HANDLING
+        ================================================= */
+
+        if (!response.ok) {
+
+            let errorData = {};
+
+            try {
+
+                errorData =
+                    await response.json();
+
+            } catch (e) {
+
+                errorData = {};
+
+            }
+
+
+            if (
+                response.status === 401
+            ) {
+
+                throw new Error(
+                    'Invalid Groq API key. Please check your key and save it again.'
+                );
+
+            }
+
+
+            if (
+                response.status === 403
+            ) {
+
+                throw new Error(
+                    'Groq rejected the request. Check your API key permissions.'
+                );
+
+            }
+
+
+            if (
+                response.status === 429
+            ) {
+
+                throw new Error(
+                    'Groq rate limit reached. Please wait a moment and try again.'
+                );
+
+            }
+
+
+            const errorMessage =
+                errorData?.error?.message ||
+                errorData?.error ||
+                `Groq server error: ${response.status}`;
+
+
+            throw new Error(
+                errorMessage
+            );
+
         }
 
-        const userContent = [];
-        if (uploadedImage) {
-            userContent.push({ type: "text", text: customMsg || "Analyze and solve the problem shown in this image." });
-            userContent.push({ type: "image_url", image_url: { url: uploadedImage } });
-        } else {
-            userContent.push({ type: "text", text: customMsg });
+
+        /* =================================================
+           STREAM RESPONSE
+        ================================================= */
+
+        const reader =
+            response.body.getReader();
+
+        const decoder =
+            new TextDecoder();
+
+        let fullContent = '';
+
+        let lineBuffer = '';
+
+
+        while (true) {
+
+            const {
+                done,
+                value
+            } = await reader.read();
+
+
+            if (done) {
+
+                break;
+
+            }
+
+
+            lineBuffer +=
+                decoder.decode(
+                    value,
+                    {
+                        stream: true
+                    }
+                );
+
+
+            const lines =
+                lineBuffer.split('\n');
+
+
+            lineBuffer =
+                lines.pop();
+
+
+            for (
+                const line of lines
+            ) {
+
+                if (
+                    !line.startsWith('data: ')
+                ) {
+
+                    continue;
+
+                }
+
+
+                const dataStr =
+                    line.substring(6).trim();
+
+
+                if (
+                    dataStr === '[DONE]'
+                ) {
+
+                    continue;
+
+                }
+
+
+                try {
+
+                    const parsed =
+                        JSON.parse(
+                            dataStr
+                        );
+
+
+                    const delta =
+                        parsed
+                            ?.choices?.[0]
+                            ?.delta
+                            ?.content ||
+                        "";
+
+
+                    if (delta) {
+
+                        fullContent += delta;
+
+
+                        document
+                            .getElementById(
+                                'solutionResult'
+                            )
+                            .innerHTML =
+                            marked.parse(
+                                fullContent
+                            );
+
+
+                        if (
+                            window.MathJax
+                        ) {
+
+                            MathJax.typesetPromise()
+                                .catch(() => {});
+
+                        }
+
+                    }
+
+                } catch (e) {
+
+                    console.warn(
+                        'Could not parse stream chunk:',
+                        e
+                    );
+
+                }
+
+            }
+
         }
 
-        // Add user message to history
-        chatContext.push({ role: "user", content: userContent });
 
-        try {
-            const response = await fetch(CONFIG.API_ENDPOINT, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    messages: chatContext,
-                    model: "llama-3.2-11b-vision-preview",
-                    temperature: 0.1 // Lowered for maximum accuracy and determinism
-                })
+        /* =================================================
+           SAVE AI RESPONSE TO CONTEXT
+        ================================================= */
+
+        if (fullContent) {
+
+            chatContext.push({
+                role: "assistant",
+                content: fullContent
             });
 
-            if (!response.ok) {
-                const errorData = await response.json().catch(() => ({}));
-                
-                if (response.status === 404) {
-                    throw new Error('Worker endpoint not found (404). Check your Worker route configuration.');
-                }
+        }
 
-                const errorMessage = errorData.error || `Server Error: ${response.status}`;
-                throw new Error(errorMessage);
+
+        /* Save history */
+
+        saveToHistory(
+            customMsg.substring(0, 25) ||
+            (
+                uploadedImage
+                    ? "Visual Analysis"
+                    : "New Chat"
+            ),
+            fullContent
+        );
+
+
+        if (
+            window.MathJax
+        ) {
+
+            MathJax.typesetPromise()
+                .catch(() => {});
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            'PolySolve AI Error:',
+            error
+        );
+
+
+        showNotification(
+            error.message ||
+            'Something went wrong while contacting Groq.',
+            'danger'
+        );
+
+
+        /*
+            Remove the last user message if the request failed.
+            This prevents a failed request from polluting the
+            conversation context.
+        */
+
+        if (
+            chatContext.length > 0 &&
+            chatContext[
+                chatContext.length - 1
+            ].role === 'user'
+        ) {
+
+            chatContext.pop();
+
+        }
+
+    } finally {
+
+        document.getElementById(
+            'loadingSpinner'
+        ).style.display = 'none';
+
+        document.getElementById(
+            'streamingIndicator'
+        ).style.display = 'none';
+
+        document.getElementById(
+            'solveBtn'
+        ).disabled = false;
+
+    }
+
+}
+
+
+/* =========================================================
+   HISTORY
+========================================================= */
+
+function saveToHistory(
+    subject,
+    content
+) {
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(
+                'omni_history'
+            ) || '[]'
+        );
+
+
+    const newItem = {
+
+        id: Date.now(),
+
+        subject: subject,
+
+        content: content,
+
+        date:
+            new Date()
+                .toLocaleDateString()
+
+    };
+
+
+    history.unshift(
+        newItem
+    );
+
+
+    localStorage.setItem(
+        'omni_history',
+        JSON.stringify(
+            history.slice(0, 10)
+        )
+    );
+
+
+    renderHistory();
+
+}
+
+
+function renderHistory() {
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(
+                'omni_history'
+            ) || '[]'
+        );
+
+
+    const container =
+        document.getElementById(
+            'historyList'
+        );
+
+
+    if (
+        history.length === 0
+    ) {
+
+        container.innerHTML =
+            '<p class="px-3 small text-muted italic">No history yet</p>';
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        history.map(
+            item => `
+
+                <div class="d-flex align-items-center history-item">
+
+                    <a
+                        href="#"
+                        class="nav-link small py-2 px-3 flex-grow-1"
+                        onclick="loadHistoryItem(${item.id}); return false;"
+                    >
+
+                        <i class="bi bi-file-text me-2"></i>
+
+                        ${escapeHtml(item.subject)}
+
+                    </a>
+
+                    <button
+                        class="btn btn-link btn-sm text-danger opacity-50"
+                        onclick="deleteHistoryItem(${item.id})"
+                    >
+
+                        <i class="bi bi-trash"></i>
+
+                    </button>
+
+                </div>
+
+            `
+        ).join('');
+
+}
+
+
+function deleteHistoryItem(id) {
+
+    let history =
+        JSON.parse(
+            localStorage.getItem(
+                'omni_history'
+            ) || '[]'
+        );
+
+
+    history =
+        history.filter(
+            item => item.id !== id
+        );
+
+
+    localStorage.setItem(
+        'omni_history',
+        JSON.stringify(history)
+    );
+
+
+    renderHistory();
+
+}
+
+
+function loadHistoryItem(id) {
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(
+                'omni_history'
+            ) || '[]'
+        );
+
+
+    const item =
+        history.find(
+            i => i.id === id
+        );
+
+
+    if (item) {
+
+        document.getElementById(
+            'placeholderResult'
+        ).style.display = 'none';
+
+        document.getElementById(
+            'resultsCard'
+        ).style.display = 'block';
+
+        document.getElementById(
+            'solutionResult'
+        ).innerHTML =
+            marked.parse(
+                item.content
+            );
+
+
+        if (
+            window.MathJax
+        ) {
+
+            MathJax.typesetPromise()
+                .catch(() => {});
+
+        }
+
+
+        if (
+            window.innerWidth < 992
+        ) {
+
+            sidebar.classList.remove(
+                'active'
+            );
+
+            overlay.classList.remove(
+                'active'
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   SECURITY HELPER FOR HISTORY TITLES
+========================================================= */
+
+function escapeHtml(text) {
+
+    const div =
+        document.createElement('div');
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================================
+   EXPORT PDF
+========================================================= */
+
+function exportToPDF() {
+
+    const element =
+        document.getElementById(
+            'solutionResult'
+        );
+
+
+    const opt = {
+
+        margin: 1,
+
+        filename:
+            'PolySolve_Report.pdf',
+
+        image: {
+            type: 'jpeg',
+            quality: 0.98
+        },
+
+        html2canvas: {
+            scale: 2
+        },
+
+        jsPDF: {
+            unit: 'in',
+            format: 'letter',
+            orientation: 'portrait'
+        }
+
+    };
+
+
+    html2pdf()
+        .set(opt)
+        .from(element)
+        .save();
+
+}
+
+
+/* =========================================================
+   EXPORT TXT
+========================================================= */
+
+function exportToTXT() {
+
+    const text =
+        document.getElementById(
+            'solutionResult'
+        ).innerText;
+
+
+    const blob =
+        new Blob(
+            [text],
+            {
+                type: 'text/plain'
             }
+        );
 
-            const reader = response.body.getReader();
-            const decoder = new TextDecoder();
-            let fullContent = '';
-            let lineBuffer = ''; // Buffer for partial chunks
 
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
-                
-                lineBuffer += decoder.decode(value, { stream: true });
-                const lines = lineBuffer.split('\n');
-                lineBuffer = lines.pop(); // Keep partial line in buffer
+    const anchor =
+        document.createElement('a');
 
-                for (const line of lines) {
-                    if (line.startsWith('data: ')) {
-                        const dataStr = line.replace('data: ', '');
-                        if (dataStr === '[DONE]') break;
-                        try {
-                            const parsed = JSON.parse(dataStr);
-                            const delta = parsed.choices[0].delta?.content || "";
-                            fullContent += delta;
-                            document.getElementById('solutionResult').innerHTML = marked.parse(fullContent);
-                        } catch (e) {}
+
+    anchor.download =
+        'PolySolve_Solution.txt';
+
+
+    anchor.href =
+        window.URL.createObjectURL(
+            blob
+        );
+
+
+    anchor.click();
+
+
+    window.URL.revokeObjectURL(
+        anchor.href
+    );
+
+}
+
+
+/* =========================================================
+   COPY SOLUTION
+========================================================= */
+
+function copySolution() {
+
+    const text =
+        document.getElementById(
+            'solutionResult'
+        ).innerText;
+
+
+    navigator.clipboard
+        .writeText(text)
+        .then(() => {
+
+            showNotification(
+                'Copied to clipboard!'
+            );
+
+        })
+        .catch(() => {
+
+            showNotification(
+                'Could not copy solution',
+                'danger'
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   SHARE SOLUTION
+========================================================= */
+
+async function shareSolution() {
+
+    const text =
+        document.getElementById(
+            'solutionResult'
+        ).innerText;
+
+
+    if (!text) {
+
+        return showNotification(
+            'There is no solution to share',
+            'warning'
+        );
+
+    }
+
+
+    if (
+        navigator.share
+    ) {
+
+        try {
+
+            await navigator.share({
+
+                title:
+                    'PolySolve AI Solution',
+
+                text: text
+
+            });
+
+        } catch (e) {
+
+            console.log(
+                'Share cancelled'
+            );
+
+        }
+
+    } else {
+
+        copySolution();
+
+        showNotification(
+            'Sharing is not supported here. Solution copied instead.',
+            'info'
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+function submitFeedback() {
+
+    const feedback =
+        document
+            .getElementById(
+                'feedbackText'
+            )
+            .value
+            .trim();
+
+
+    if (feedback) {
+
+        const email =
+            "emmanuelademun7@gmail.com";
+
+
+        const subject =
+            encodeURIComponent(
+                "PolySolve AI Usability Feedback"
+            );
+
+
+        const body =
+            encodeURIComponent(
+                feedback
+            );
+
+
+        window.location.href =
+            `mailto:${email}?subject=${subject}&body=${body}`;
+
+
+        showNotification(
+            'Opening your email client...',
+            'info'
+        );
+
+
+        document.getElementById(
+            'feedbackText'
+        ).value = '';
+
+    }
+
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+function showSection(sectionId) {
+
+    /* Reserved for future sections */
+
+}
+
+
+/* =========================================================
+   NOTIFICATIONS
+========================================================= */
+
+function showNotification(
+    msg,
+    type = 'info'
+) {
+
+    const div =
+        document.createElement('div');
+
+
+    div.className =
+        'toast-custom position-fixed bottom-0 end-0 m-4';
+
+
+    div.style.zIndex =
+        '2000';
+
+
+    let icon =
+        'info-circle';
+
+
+    if (
+        type === 'danger'
+    ) {
+
+        icon =
+            'exclamation-triangle';
+
+    } else if (
+        type === 'warning'
+    ) {
+
+        icon =
+            'exclamation-circle';
+
+    } else if (
+        type === 'success'
+    ) {
+
+        icon =
+            'check-circle';
+
+    }
+
+
+    div.innerHTML = `
+
+        <i class="bi bi-${icon} me-2"></i>
+
+        ${escapeHtml(msg)}
+
+    `;
+
+
+    document.body.appendChild(
+        div
+    );
+
+
+    setTimeout(
+        () => div.remove(),
+        3000
+    );
+
+}
+
+
+/* =========================================================
+   SERVICE WORKER
+========================================================= */
+
+if (
+    'serviceWorker' in navigator
+) {
+
+    window.addEventListener(
+        'load',
+        () => {
+
+            navigator.serviceWorker
+                .register(
+                    './sw.js',
+                    {
+                        scope: '/'
                     }
-                }
-            }
+                )
+                .then(
+                    reg => {
 
-            // Add AI response to history for next follow-up
-            chatContext.push({ role: "assistant", content: fullContent });
-            
-            saveToHistory(customMsg.substring(0, 25) || (uploadedImage ? "Visual Analysis" : "New Chat"), fullContent);
-            if (window.MathJax) MathJax.typesetPromise();
-        } catch (error) {
-            showNotification(error.message, 'danger');
-        } finally {
-            document.getElementById('loadingSpinner').style.display = 'none';
-            document.getElementById('streamingIndicator').style.display = 'none';
-            document.getElementById('solveBtn').disabled = false;
+                        console.log(
+                            'Service Worker registered',
+                            reg
+                        );
+
+                    }
+                )
+                .catch(
+                    err => {
+
+                        console.log(
+                            'Service Worker failed',
+                            err
+                        );
+
+                    }
+                );
+
         }
-    }
+    );
 
-    function saveToHistory(subject, content) {
-        const history = JSON.parse(localStorage.getItem('omni_history') || '[]');
-        const newItem = {
-            id: Date.now(),
-            subject: subject,
-            content: content,
-            date: new Date().toLocaleDateString()
-        };
-        history.unshift(newItem);
-        localStorage.setItem('omni_history', JSON.stringify(history.slice(0, 10))); // Keep last 10
-        renderHistory();
-    }
+}
 
-    function renderHistory() {
-        const history = JSON.parse(localStorage.getItem('omni_history') || '[]');
-        const container = document.getElementById('historyList');
-        if (history.length === 0) return;
 
-        container.innerHTML = history.map(item => `
-            <div class="d-flex align-items-center history-item">
-                <a href="#" class="nav-link small py-2 px-3 flex-grow-1" onclick="loadHistoryItem(${item.id})">
-                    <i class="bi bi-file-text me-2"></i> ${item.subject}
-                </a>
-                <button class="btn btn-link btn-sm text-danger opacity-50" onclick="deleteHistoryItem(${item.id})"><i class="bi bi-trash"></i></button>
-            </div>
-        `).join('');
-    }
+/* =========================================================
+   PWA INSTALL
+========================================================= */
 
-    function deleteHistoryItem(id) {
-        let history = JSON.parse(localStorage.getItem('omni_history') || '[]');
-        history = history.filter(item => item.id !== id);
-        localStorage.setItem('omni_history', JSON.stringify(history));
-        renderHistory();
-    }
-    function loadHistoryItem(id) {
-        const history = JSON.parse(localStorage.getItem('omni_history') || '[]');
-        const item = history.find(i => i.id === id);
-        if (item) {
-            document.getElementById('placeholderResult').style.display = 'none';
-            document.getElementById('resultsCard').style.display = 'block';
-            document.getElementById('solutionResult').innerHTML = marked.parse(item.content);
-            if (window.MathJax) MathJax.typesetPromise();
-            if (window.innerWidth < 992) {
-                sidebar.classList.remove('active');
-                overlay.classList.remove('active');
-            }
-        }
-    }
+window.addEventListener(
+    'beforeinstallprompt',
+    (e) => {
 
-    function exportToPDF() {
-        const element = document.getElementById('solutionResult');
-        const opt = { margin: 1, filename: 'PolySolve_Report.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
-        html2pdf().set(opt).from(element).save();
-    }
-
-    function exportToTXT() {
-        const text = document.getElementById('solutionResult').innerText;
-        const blob = new Blob([text], { type: 'text/plain' });
-        const anchor = document.createElement('a');
-        anchor.download = 'PolySolve_Solution.txt';
-        anchor.href = window.URL.createObjectURL(blob);
-        anchor.click();
-    }
-
-    function copySolution() {
-        const text = document.getElementById('solutionResult').innerText;
-        navigator.clipboard.writeText(text).then(() => {
-            showNotification('Copied to clipboard!');
-        });
-    }
-
-    // Save Groq API key locally in this browser
-    function saveGroqApiKey() {
-        const apiKey = document.getElementById('groqApiKey').value.trim();
-
-        if (!apiKey) {
-            showNotification('Please enter your Groq API key', 'warning');
-            return;
-        }
-
-        localStorage.setItem('groq_api_key', apiKey);
-        showNotification('Groq API key saved successfully', 'info');
-
-        document.getElementById('groqApiKey').value = '';
-    }
-
-    window.addEventListener('load', () => {
-        if (localStorage.getItem('groq_api_key')) {
-            console.log('Groq API key is saved locally.');
-        }
-    });
-
-    function submitFeedback() {
-        const feedback = document.getElementById('feedbackText').value.trim();
-        if (feedback) {
-            const email = "emmanuelademun7@gmail.com";
-            const subject = encodeURIComponent("PolySolve AI Usability Feedback");
-            const body = encodeURIComponent(feedback);
-            
-            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-            
-            showNotification('Opening your email client...', 'info');
-            document.getElementById('feedbackText').value = '';
-        }
-    }
-
-    function showSection(sectionId) {
-        // Placeholder for future multi-section navigation logic
-    }
-
-    function showNotification(msg, type = 'info') {
-        const div = document.createElement('div');
-        div.className = 'toast-custom position-fixed bottom-0 end-0 m-4';
-        div.style.zIndex = '2000';
-        div.innerHTML = `<i class="bi bi-${type === 'danger' ? 'exclamation-triangle' : 'info-circle'} me-2"></i> ${msg}`;
-        document.body.appendChild(div);
-        setTimeout(() => div.remove(), 3000);
-    }
-
-    // Register Service Worker for PWA
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js', { scope: '/' })
-                .then(reg => console.log('Service Worker registered'))
-                .catch(err => console.log('Service Worker failed', err));
-        });
-    }
-
-    // PWA Install Logic
-    window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
-        deferredPrompt = e;
-        document.getElementById('installContainer').style.display = 'block';
-    });
 
-    document.getElementById('installBtn').addEventListener('click', async () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            if (outcome === 'accepted') {
-                document.getElementById('installContainer').style.display = 'none';
-            }
-            deferredPrompt = null;
+        deferredPrompt = e;
+
+        document.getElementById(
+            'installContainer'
+        ).style.display = 'block';
+
+    }
+);
+
+
+document.getElementById(
+    'installBtn'
+).addEventListener(
+    'click',
+    async () => {
+
+        if (!deferredPrompt) {
+
+            return;
+
         }
-    });
+
+
+        deferredPrompt.prompt();
+
+
+        const {
+            outcome
+        } =
+            await deferredPrompt.userChoice;
+
+
+        if (
+            outcome === 'accepted'
+        ) {
+
+            document.getElementById(
+                'installContainer'
+            ).style.display = 'none';
+
+        }
+
+
+        deferredPrompt = null;
+
+    }
+);
+
 </script>
+
 </body>
 </html>
